@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="#/">
+                    <div id="logo-header">Garden<span class="asterix">*</span>spruce</div>
+                    <div id="logo-sub">Garden design by the hour in Seattle</div>
+                </a>
+            </div>
+        </header>
+        <nav>
+            <a href="#/service">The service</a>
+            <a href="#/magazine">The magazine</a>
+            <a href="#/login" id="login-link" class="flt-right">Log In</a>
+            <a href="#/logout" id="logout-link" class="flt-right">Log Out</a>
+            <a href="#/signup" class="btn-link btn-primary">Book a Designer</a>
+        </nav>
+        <section id="page">
+        </section>
+        <footer>
+            <section>
+                <a href="#/about">About</a>
+                <a href="#/designers">Design Careers</a>
+                <a href="#/signup" class="btn-link btn-secondary">Book a Designer</a>
+            </section>
+        </footer>
+        <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBVZBRxfwG3Q8zN4gjjuqYO829lhqmtDGQ",
+            authDomain: "gardenspruce-1f48a.firebaseapp.com",
+            databaseURL: "https://gardenspruce-1f48a.firebaseio.com",
+            storageBucket: "",
+        };
+        firebase.initializeApp(config);
+        </script>
+        <script src="pages/home.js"></script>
+        <script src="pages/about.js"></script>
+        <script src="pages/dashboard.js"></script>
+        <script src="pages/mag.js"></script>
+        <script src="pages/login.js"></script>
+        <script src="pages/logout.js"></script>
+        <script src="pages/signup.js"></script>
+        <script src="pages/service.js"></script>
+        <script src="auth.js"></script>
+        <script src="router.js"></script>
+    </body>
+</html>
