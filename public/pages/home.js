@@ -4,7 +4,7 @@ function loadHome() {
         <div class="grid">
         <div class="col col4">
             <p class="emphasis">The easiest way to get set up with top garden design talent in Seattle.
-                From start to finish, we take you through every step of the design process, creating outdoor spaces you will love.  
+                From start to finish, we take you through every step of the design and installation process, creating outdoor spaces you will love.  
             </p>
         </div>
         <div class="col col8">

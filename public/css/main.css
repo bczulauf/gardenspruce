@@ -206,11 +206,26 @@ footer a:last-child {
     color: #edd216;
 }
 
-input.inpt-std {
+input {
     font-family: Georgia;
+    font-size: 1.2em;
     display: block;
     padding: 10px 5px;
+    margin-bottom: 20px;
+}
+
+input.inpt-long {
+    width: 460px;
+}
+
+input.inpt-short {
+    width: 220px;
     margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+input.inpt-short:last-child {
+    margin-right: 0;
 }
 
 button.btn-std {

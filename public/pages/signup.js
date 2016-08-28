@@ -37,9 +37,15 @@ function loadSignup() {
     var page = document.getElementById("page");
     var template = `
         <h4>Sign Up</h4>
-        <input class="inpt-std" type="text" id="email" name="email" placeholder="Email"/>
-        <input class="inpt-std" type="password" id="password" name="password" placeholder="Password"/>
+        <form>
+        <div class="row">
+        <input class="inpt-short" type="text" id="first-name" name="firstName" placeholder="First name"/>
+        <input class="inpt-short" type="text" id="last-name" name="lastName" placeholder="Last name"/>
+        </div>
+        <input class="inpt-long" type="email" id="email" name="email" placeholder="Email"/>
+        <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
         <button class="btn-std btn-primary" id="sign-up" name="signup">Sign Up</button>
+        </form>
         <p>
             Already have an account? <a href="#/login">Log In!</a>
         </p>
