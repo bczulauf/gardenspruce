@@ -4,19 +4,25 @@
 function handleSignUp() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    if (email.length < 4) {
-        alert('Please enter an email address.');
-        return;
-    }
+    var firstName = document.getElementById('first-name').value;
+    var lastName = document.getElementById('last-name').value;
+
     if (password.length < 4) {
-        alert('Please enter a password.');
+        alert('Please enter a password with at least 4 characters.');
         return;
     }
     // Sign in with email and pass.
-    // [START createwithemail]
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
         var path = window.location.pathname;
-        window.location.replace(`${path}#/dashboard`);
+        
+        firebase.database().ref('users/' + user.uid).update({
+            firstName: firstName,
+            lastName: lastName
+        }).then(function() {
+            window.location.replace(`${path}#/dashboard`); 
+        }).catch(function(error) {
+            console.log(error);
+        });
     }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -30,14 +36,12 @@ function handleSignUp() {
         console.log(error);
         // [END_EXCLUDE]
     });
-    // [END createwithemail]
 }
 
 function loadSignup() {
     var page = document.getElementById("page");
     var template = `
         <h4>Sign Up</h4>
-        <form>
         <div class="row">
         <input class="inpt-short" type="text" id="first-name" name="firstName" placeholder="First name"/>
         <input class="inpt-short" type="text" id="last-name" name="lastName" placeholder="Last name"/>
@@ -45,8 +49,7 @@ function loadSignup() {
         <input class="inpt-long" type="email" id="email" name="email" placeholder="Email"/>
         <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
         <button class="btn-std btn-primary" id="sign-up" name="signup">Sign Up</button>
-        </form>
-        <p>
+        <p class="txt-sm">
             Already have an account? <a href="#/login">Log In!</a>
         </p>
     `;

@@ -16,15 +16,17 @@
             <a href="#/magazine">The magazine</a>
             <a href="#/login" id="login-link" class="flt-right">Log In</a>
             <a href="#/logout" id="logout-link" class="flt-right">Log Out</a>
-            <a href="#/signup" class="btn-link btn-primary">Book a Designer</a>
+            <a href="#/signup" class="btn-link btn-primary signup-link">Book a Designer</a>
+            <a href="#/dashboard" class="btn-link btn-primary dashboard-link">Dashboard</a>
         </nav>
         <section id="page">
         </section>
         <footer>
-            <section>
+            <section class="flex">
                 <a href="#/about">About</a>
                 <a href="#/designers">Design Careers</a>
-                <a href="#/signup" class="btn-link btn-secondary">Book a Designer</a>
+                <a href="#/signup" class="btn-link btn-primary signup-link flt-right">Book a Designer</a>
+                <a href="#/dashboard" class="btn-link btn-primary dashboard-link flt-right">Dashboard</a>
             </section>
         </footer>
         <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
@@ -46,7 +48,7 @@
         <script src="pages/logout.js"></script>
         <script src="pages/signup.js"></script>
         <script src="pages/service.js"></script>
-        <script src="auth.js"></script>
         <script src="router.js"></script>
+        <script src="auth.js"></script>
     </body>
 </html>

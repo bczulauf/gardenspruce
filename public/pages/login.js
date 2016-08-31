@@ -14,7 +14,7 @@ function handleLogin() {
     }
     
     // Sign in with email and pass.
-    firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
         var path = window.location.pathname;
         window.location.replace(`${path}#/dashboard`);
     }).catch(function(error) {
@@ -41,7 +41,7 @@ function loadLogin() {
         <input class="inpt-std" type="text" id="email" name="email" placeholder="Email"/>
         <input class="inpt-std" type="password" id="password" name="password" placeholder="Password"/>
         <button class="btn-std btn-primary" id="login" name="login">Log In</button>
-        <p>
+        <p class="txt-sm">
             Don't have an account yet? <a href="#/signup">Sign up!</a>
             Forgot your password?
         </p>

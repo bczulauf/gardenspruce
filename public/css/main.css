@@ -37,13 +37,10 @@ header a:hover {
 }
 
 #logo-sub {
-    font-family: monospace;
+    font-family: 'OpenSans';
+    font-size: .7em;
     text-transform: uppercase;
     margin: 10px 0 20px 0;
-}
-
-.flt-right {
-    margin-left: auto;
 }
 
 .asterix {
@@ -54,8 +51,9 @@ nav {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
-    font-family: monospace;
-    font-size: 1.2em;
+    font-family: 'OpenSans';
+    font-size: .7em;
+    text-transform: uppercase;
     display: flex;
     width: 940px;
     margin: 0 auto 20px auto;
@@ -99,7 +97,7 @@ section {
 
 .row {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .grid {
@@ -136,16 +134,20 @@ section {
     width: 620px;
 }
 
+.photos {
+    position: relative;
+}
+
 .photo {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     background: gray;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .photo img {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     margin: 0;
     padding: 0;
 }
@@ -154,14 +156,42 @@ section {
     margin-right: 0;
 }
 
+.overlay {
+    position: absolute;
+    width: 540px;
+    height: 300px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 200px;
+    top: 80px;
+}
+
+.overlay-content {
+    width: 400px;
+}
+
 h4 {
-    font-family: monospace;
+    font-family: 'OpenSans';
+    text-transform: uppercase;
+    font-size: .8em;
+    line-height: .8em;
 }
 
 p {
     font-family: georgia;
     line-height: 1.6em;
     font-size: 1.4em;
+}
+
+p a {
+    color: #49dee6;
+    text-decoration: none;
+}
+
+.txt-sm {
+    font-size: 1em;
 }
 
 .emphasis:first-of-type::first-letter {
@@ -181,7 +211,9 @@ footer {
     background-color: #eee;
     padding: 10px 0;
     margin-top: 40px;
-    font-family: monospace;
+    font-family: 'OpenSans';
+    font-size: .7em;
+    text-transform: uppercase;
 }
 
 footer a {
@@ -232,10 +264,23 @@ button.btn-std {
     border: none;
     margin: 0;
     padding: 5px 20px;
-    font-family: monospace;
-    font-size: 1.2em;
+    font-family: 'OpenSans';
+    font-size: .7em;
+    text-transform: uppercase;
 }
 
 #logout-link {
     display: none;
+}
+
+.dashboard-link {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flt-right {
+    margin-left: auto;
 }

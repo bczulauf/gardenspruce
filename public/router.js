@@ -19,9 +19,6 @@ function compile(pattern) {
             }
         })
 
-    if (regexParts.length === 0) {
-        regexParts.push("");
-    }
     regexParts.push("?");
 
     return {
@@ -42,7 +39,8 @@ function compilePattern(pattern) {
 // Matches url with registered route.
 function matchUrl(pattern, url) {
     var compiledPattern = compilePattern(pattern);
-    var { regexString, params } = compiledPattern;
+    var regexString = compiledPattern.regexString;
+    var params = compiledPattern.params;
     var match = url.match(new RegExp(regexString, 'i'));
     if (!match) {
         return null;
@@ -60,11 +58,16 @@ function addRoute(url, dispatch) {
 }
 
 // Based on current url, loads page.
-function loadPage() {
+function loadPage(user) {
     var url = window.location.hash.slice(1) || "/";
     var splitUrl = url.split("?");
     var path = splitUrl[0];
     var queryStr = splitUrl[1];
+    
+    // This is a temporary hack to make regex match work.
+    if (path === "/") {
+        path = "/home";    
+    }
 
     // Parses the query.
     var query = queryStr && queryStr.split("&").map(function(n){return n=n.split("="),this[n[0]]=n[1],this;}.bind({}))[0];
@@ -81,21 +84,17 @@ function loadPage() {
 }
 
 // Registers routes.
-addRoute("/", loadHome);
+addRoute("/home", loadHome);
 addRoute("/about", loadAbout);
 addRoute("/dashboard", loadDashboard);
 addRoute("/login", loadLogin);
 addRoute("/logout", handleLogout);
+addRoute("/signup/location", loadLocation);
 addRoute("/signup", loadSignup);
 addRoute("/service", loadService);
 addRoute("/mag", loadMag);
 
 // Listens on hash change.
 window.addEventListener("hashchange", () => {
-    loadPage();
-});
-
-// Listens on page load.
-window.addEventListener("load", () => {
     loadPage();
 });
