@@ -1,8 +1,4 @@
 @font-face {
-font-family: 'Italiana';
-src: url('../fonts/Italiana-Regular.ttf');
-}
-@font-face {
   font-family: 'OpenSans';
   src: url('../fonts/OpenSans-Semibold.ttf');
 }
@@ -10,87 +6,55 @@ src: url('../fonts/Italiana-Regular.ttf');
 body {
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    color: #111;  
+}
+
+a {
+    color: #111;
+    text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-header a {
-    color: #333;
-    text-decoration: none;
-    display: inline-block;
-}
-
-header a:hover {
-    text-decoration: none;
-}
-
-#logo {
-    text-align: center;
-    justify-content: center;
-}
-
-#logo-header {
-    font-family: 'Italiana';
-    font-size: 4em;
-}
-
-#logo-sub {
-    font-family: 'OpenSans';
-    font-size: .7em;
-    text-transform: uppercase;
-    margin: 10px 0 20px 0;
-}
-
-.asterix {
-    color: #edd216;
-}
-
-nav {
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-    font-family: 'OpenSans';
-    font-size: .7em;
-    text-transform: uppercase;
+.header {
     display: flex;
     width: 940px;
-    margin: 0 auto 20px auto;
+    height: 80px;
+    align-items: center;
+    margin: 0 auto;
 }
 
-nav a {
-    color: #333;
+.header-link {
+    font-family: Georgia, serif;
     text-decoration: none;
-    margin-right: 20px;
-    margin-top: 5px;
+    margin-left: 20px;
 }
 
-nav a:last-child {
-    margin-right: 0;
+.logo {
+    font-family: "OpenSans", Arial, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 80px;
 }
 
-.btn-link {
-    padding: 5px 20px;
-    margin: 0;
+.btn {
+    font-family: "OpenSans", Arial, sans-serif;
+    padding: 5px 15px;
+    background: #fff;
+    color: #111;
+    border: 2px solid #111;
 }
 
-.btn-primary {
-    background: #edd216;
-    color: #333;
-}
-
-.btn-link:hover {
-    background: #49dee6;
+.btn:hover {
+    background: #111;
+    color: #fff;
     text-decoration: none;
 }
 
-.btn-secondary {
-    background: #ccc;
-    color: #333;
-}
-
-section {
+.section {
     width: 940px;
     margin: 0 auto;
 }
@@ -156,20 +120,29 @@ section {
     margin-right: 0;
 }
 
-.overlay {
-    position: absolute;
-    width: 540px;
-    height: 300px;
-    background: #fff;
+.splash {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 200px;
-    top: 80px;
+    background-image: url("../img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #ddd;
+    height: 400px;
+    margin-bottom: 40px;
 }
 
-.overlay-content {
+.splash-content {
+    background: rgba(255, 255, 255, .9);
+    padding: 10px 40px 40px 40px;
     width: 400px;
+}
+
+h2 {
+    font-weight: normal;
+    margin-bottom: 0;
 }
 
 h4 {
@@ -182,20 +155,27 @@ h4 {
 p {
     font-family: georgia;
     line-height: 1.6em;
-    font-size: 1.4em;
 }
 
-p a {
-    color: #49dee6;
-    text-decoration: none;
+.txt-lg {
+    font-size: 1.4em
+}
+
+.txt-md {
+    font-size: 1.2em; 
 }
 
 .txt-sm {
-    font-size: 1em;
+    font-size: .7em;
+}
+
+.num {
+    font-size: 1.8em;
+    line-height: 1.8em;
+    text-align: center;
 }
 
 .emphasis:first-of-type::first-letter {
-    font-family: 'Italiana';
     font-size: 3.2em;
     float: left;
     padding-top: .24em;
@@ -208,24 +188,9 @@ p a {
 }
 
 footer {
-    background-color: #eee;
-    padding: 10px 0;
-    margin-top: 40px;
-    font-family: 'OpenSans';
-    font-size: .7em;
-    text-transform: uppercase;
-}
-
-footer a {
-    color: #333;
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 20px;
-    margin-top: 5px;
-}
-
-footer a:last-child {
-    margin-left: auto;
+    align-items: center;
+    height: 80px;
+    font-size: .8em;
 }
 
 .selected-link::before {
@@ -240,33 +205,40 @@ footer a:last-child {
 
 input {
     font-family: Georgia;
-    font-size: 1.2em;
     display: block;
     padding: 10px 5px;
     margin-bottom: 20px;
 }
 
-input.inpt-long {
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #111;
+    font-style: normal;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #111;
+    font-style: normal;
+}
+
+*:focus {
+    outline: none;
+}
+
+.inpt-stretch {
+    width: 100%;
+}
+
+.inpt-long {
     width: 460px;
 }
 
-input.inpt-short {
+.inpt-short {
     width: 220px;
     margin-bottom: 10px;
     margin-right: 20px;
 }
 
-input.inpt-short:last-child {
+.inpt-short:last-child {
     margin-right: 0;
-}
-
-button.btn-std {
-    border: none;
-    margin: 0;
-    padding: 5px 20px;
-    font-family: 'OpenSans';
-    font-size: .7em;
-    text-transform: uppercase;
 }
 
 #logout-link {
@@ -283,4 +255,18 @@ button.btn-std {
 
 .flt-right {
     margin-left: auto;
+}
+
+.signup-link {
+    padding: 10px 40px;
+}
+
+.divider {
+    border-top: 1px solid #ddd;
+    margin-bottom: 40px;
+}
+
+.fit {
+    width: 100%;
+    max-height: 280px;
 }

@@ -38,12 +38,11 @@ function loadLogin() {
     var page = document.getElementById("page");
     var template = `
         <h4>Log In</h4>
-        <input class="inpt-std" type="text" id="email" name="email" placeholder="Email"/>
-        <input class="inpt-std" type="password" id="password" name="password" placeholder="Password"/>
-        <button class="btn-std btn-primary" id="login" name="login">Log In</button>
-        <p class="txt-sm">
+        <input class="inpt-long" type="text" id="email" name="email" placeholder="Email"/>
+        <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
+        <button class="btn" id="login" name="login">Log In</button>
+        <p>
             Don't have an account yet? <a href="#/signup">Sign up!</a>
-            Forgot your password?
         </p>
     `;
 

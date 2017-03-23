@@ -89,7 +89,6 @@ addRoute("/about", loadAbout);
 addRoute("/dashboard", loadDashboard);
 addRoute("/login", loadLogin);
 addRoute("/logout", handleLogout);
-addRoute("/signup/location", loadLocation);
 addRoute("/signup", loadSignup);
 addRoute("/service", loadService);
 addRoute("/mag", loadMag);

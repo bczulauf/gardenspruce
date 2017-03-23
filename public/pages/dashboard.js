@@ -1,11 +1,10 @@
 function loadDashboard() {
-    var page = document.getElementById("page");
     var currentUser = firebase.auth().currentUser;
     
     if (currentUser) {
         firebase.database().ref('/users/' + currentUser.uid).once('value').then(function(snapshot) {
+            var page = document.getElementById("page");
             var firstName = snapshot.val().firstName;
-            
             var template = `
                 <div class="grid">
                 <div id="payments" class="col col4">

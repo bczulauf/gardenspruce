@@ -48,8 +48,8 @@ function loadSignup() {
         </div>
         <input class="inpt-long" type="email" id="email" name="email" placeholder="Email"/>
         <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
-        <button class="btn-std btn-primary" id="sign-up" name="signup">Sign Up</button>
-        <p class="txt-sm">
+        <button class="btn" id="sign-up" name="signup">Sign Up</button>
+        <p>
             Already have an account? <a href="#/login">Log In!</a>
         </p>
     `;
