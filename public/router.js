@@ -1,6 +1,7 @@
 
 var routes = [];
 var patternCache = {};
+var pageElem = document.getElementById("page");
 
 function compile(pattern) {
     var params = [];
@@ -66,7 +67,7 @@ function loadPage(user) {
     
     // This is a temporary hack to make regex match work.
     if (path === "/") {
-        path = "/home";    
+        path = "/home";
     }
 
     // Parses the query.
@@ -78,7 +79,9 @@ function loadPage(user) {
         var match = matchUrl(route.url, path);
         
         if (match) {
-            route.dispatch({ params: match, query: query });
+            route.dispatch({ params: match, query: query }).then((template) => {
+                page.innerHTML = template;
+            });
         }
     }
 }

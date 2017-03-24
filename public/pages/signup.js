@@ -1,7 +1,7 @@
 /**
  * Handles the sign up button press.
  */
-function handleSignUp() {
+function handleSignUp(ctx) {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var firstName = document.getElementById('first-name').value;

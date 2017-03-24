@@ -10,9 +10,8 @@ function handleStart(evt) {
 }
 
 function loadHome() {
-    var page = document.getElementById("page");
-    var template = `
-        <div class="splash">
+    const promise = new Promise((resolve, reject) => {
+        resolve(`<div class="splash">
             <div class="splash-content">
             <p class="emphasis txt-lg">Create your dream garden with one of our design experts.
             </p>
@@ -27,8 +26,12 @@ function loadHome() {
             <div class="col5">
                 <p class="txt-md">Whether you are accessorizing or gut-renovating, we provide a custom and personal service that works. We will guide you through the entire garden design process, from designs to plant installation.</p>
             </div>
-        </div>`;
+        </div>`)
+    });
 
-    page.innerHTML = template;
+    return promise;
+}
+
+function homeLoaded() {
     document.getElementById('start-button').addEventListener('click', handleStart, false);
 }
