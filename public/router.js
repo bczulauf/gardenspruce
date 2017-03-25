@@ -1,7 +1,6 @@
 
 var routes = [];
 var patternCache = {};
-var pageElem = document.getElementById("page");
 
 function compile(pattern) {
     var params = [];
@@ -58,30 +57,40 @@ function addRoute(url, dispatch) {
     routes.push({ url: url, dispatch: dispatch });
 }
 
+function parseQuery(location) {
+    let match;
+    const pl = /\+/g;  // Regex for replacing addition symbol with a space
+    const search = /([^&=]+)=?([^&]*)/g;
+    const decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); };
+    const query = location.search.substring(1);
+
+    queryData = {};
+    while (match = search.exec(query))
+       queryData[decode(match[1])] = decode(match[2]);
+    return queryData;
+}
+
 // Based on current url, loads page.
 function loadPage(user) {
-    var url = window.location.hash.slice(1) || "/";
-    var splitUrl = url.split("?");
-    var path = splitUrl[0];
-    var queryStr = splitUrl[1];
+    const location = window.location;
+    let hash = location.hash.replace(/^#/, "");
     
     // This is a temporary hack to make regex match work.
-    if (path === "/") {
-        path = "/home";
+    if (hash === "/") {
+        hash = "/home";
     }
 
     // Parses the query.
-    var query = queryStr && queryStr.split("&").map(function(n){return n=n.split("="),this[n[0]]=n[1],this;}.bind({}))[0];
-    
+    // const query = search && search.replace("?", "").split("&").map(function(n){return n=n.split("="),this[n[0]]=n[1],this;}.bind({}))[0];
+    const query = parseQuery(location);
+
     for (var i = 0; i < routes.length; i++) {
         // Looks up route.
         var route = routes[i];
-        var match = matchUrl(route.url, path);
+        var match = matchUrl(route.url, hash);
         
         if (match) {
-            route.dispatch({ params: match, query: query }).then((template) => {
-                page.innerHTML = template;
-            });
+            route.dispatch({ params: match, query: query });
         }
     }
 }

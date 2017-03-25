@@ -1,7 +1,7 @@
 /**
  * Handles the sign up button press.
  */
-function handleSignUp(ctx) {
+function handleSignUp() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var firstName = document.getElementById('first-name').value;
@@ -38,22 +38,22 @@ function handleSignUp(ctx) {
     });
 }
 
-function loadSignup() {
-    var page = document.getElementById("page");
-    var template = `
+function loadSignup(data) {
+    const query = data.query;
+    const email = query && query["email"];
+    const page = document.getElementById("page");
+    const template = `
         <h4>Sign Up</h4>
+        <form id="create-account">
         <div class="row">
-        <input class="inpt-short" type="text" id="first-name" name="firstName" placeholder="First name"/>
-        <input class="inpt-short" type="text" id="last-name" name="lastName" placeholder="Last name"/>
+        <input class="inpt-short" type="text" id="first-name" name="firstName" required placeholder="First name"/>
+        <input class="inpt-short" type="text" id="last-name" name="lastName" required placeholder="Last name"/>
         </div>
-        <input class="inpt-long" type="email" id="email" name="email" placeholder="Email"/>
-        <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
-        <button class="btn" id="sign-up" name="signup">Sign Up</button>
-        <p>
-            Already have an account? <a href="#/login">Log In!</a>
-        </p>
-    `;
+        <input class="inpt-long" type=${email ? "hidden" : "email"} value="${email}" id="email" name="email" required placeholder="Email"/>
+        <input class="inpt-long" type="password" id="password" name="password" required placeholder="Password"/>
+        <input type="submit" class="btn" id="sign-up" name="signup">Sign Up</input>
+        </form>`;
 
     page.innerHTML = template;
-    document.getElementById('sign-up').addEventListener('click', handleSignUp, false);
+    document.getElementById('create-account').addEventListener('submit', handleSignUp, false);
 }

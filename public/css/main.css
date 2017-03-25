@@ -61,7 +61,6 @@ a:hover {
 
 .row {
     display: flex;
-    margin-bottom: 20px;
 }
 
 .grid {
@@ -142,7 +141,6 @@ a:hover {
 
 h2 {
     font-weight: normal;
-    margin-bottom: 0;
 }
 
 h4 {
