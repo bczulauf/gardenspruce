@@ -1,13 +1,15 @@
 function loadHome() {
     const page = document.getElementById("page");
-    const template = `<div class="splash">
+    const template = `
+        <div class="splash">
             <div class="splash-content">
-            <p class="emphasis txt-lg">Create your dream garden with one of our design experts.
-            </p>
-            <form id="email-form" action="#/signup">
-                <input type="email" name="email" class="inpt-stretch" placeholder="Your email" required autofocus/>
-                <input type="submit" id="start-button" class="btn signup-link">Get Started</input>
-            </form>
+                <p class="emphasis txt-lg">
+                    Create your dream garden with one of our design experts.
+                </p>
+                <form id="email-form" action="#/signup">
+                    <input type="email" name="email" class="inpt-stretch" placeholder="Your email" required autofocus/>
+                    <button type="submit" id="start-button" class="btn btn-lg">Get Started</button>
+                </form>
             </div>
         </div>
         <div class="row">

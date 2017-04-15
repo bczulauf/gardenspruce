@@ -1,11 +1,13 @@
 /**
  * Handles the sign up button press.
  */
-function handleSignUp() {
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var firstName = document.getElementById('first-name').value;
-    var lastName = document.getElementById('last-name').value;
+function handleSignUp(evt) {
+    evt.preventDefault();
+    const data = new FormData(document.getElementById('create-account'));
+    const email = data.get("email");
+    const password = data.get("password");
+    const firstName = data.get("firstName");
+    const lastName = data.get("lastName");
 
     if (password.length < 4) {
         alert('Please enter a password with at least 4 characters.');
@@ -19,7 +21,7 @@ function handleSignUp() {
             firstName: firstName,
             lastName: lastName
         }).then(function() {
-            window.location.replace(`${path}#/dashboard`); 
+            window.location.replace(`${path}#/signup/more`); 
         }).catch(function(error) {
             console.log(error);
         });
@@ -45,13 +47,13 @@ function loadSignup(data) {
     const template = `
         <h4>Sign Up</h4>
         <form id="create-account">
-        <div class="row">
-        <input class="inpt-short" type="text" id="first-name" name="firstName" required placeholder="First name"/>
-        <input class="inpt-short" type="text" id="last-name" name="lastName" required placeholder="Last name"/>
-        </div>
-        <input class="inpt-long" type=${email ? "hidden" : "email"} value="${email}" id="email" name="email" required placeholder="Email"/>
-        <input class="inpt-long" type="password" id="password" name="password" required placeholder="Password"/>
-        <input type="submit" class="btn" id="sign-up" name="signup">Sign Up</input>
+            <div class="row">
+                <input class="inpt-short" type="text" id="first-name" name="firstName" required placeholder="First name"/>
+                <input class="inpt-short" type="text" id="last-name" name="lastName" required placeholder="Last name"/>
+            </div>
+            <input class="inpt-long" type=${email ? "hidden" : "email"} ${email ? `value="${email}"`: ""} id="email" name="email" required placeholder="Email"/>
+            <input class="inpt-long" type="password" id="password" name="password" required placeholder="Password"/>
+            <button type="submit" class="btn btn-lg" id="sign-up" name="signup">Sign Up</button>
         </form>`;
 
     page.innerHTML = template;
