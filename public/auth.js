@@ -50,10 +50,3 @@ function initApp() {
     
     return promise;
 }
-
-window.onload = function() {
-    // Waits for auth before loading page. 
-    initApp().then(function(user) {
-        loadPage(user);
-    });
-};

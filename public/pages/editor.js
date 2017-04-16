@@ -1,3 +1,12 @@
+function handleBlogSubmit() {
+    evt.preventDefault();
+    const data = new FormData(document.getElementById('blog-form'));
+    const title = data.get("blogTitle");
+    const post = data.get("blogPost");
+
+    firebase.database
+}
+
 function loadEditor() {
     const page = document.getElementById("page");
     template = `
@@ -10,4 +19,5 @@ function loadEditor() {
     `;
 
     page.innerHTML = template;
+    document.getElementById('blog-form').addEventListener('submit', handleBlogSubmit, false);
 }

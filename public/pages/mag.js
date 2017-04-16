@@ -1,6 +1,12 @@
 function loadMag() {
-    var page = document.getElementById("page");
-    var template = ``;
+    const page = document.getElementById("page");
+    firebase.database().ref("posts").once('value').then((snapshot) => {
+        const posts = []
+        snapshot.forEach(function(post) {
+            posts.push(`<li><div><a href="#posts/${encodeURIComponent(post.key)}">${post.val().title}</a></div><div>${post.val().summary}</div></li>`);
+        });
 
-    page.innerHTML = template;
+        const template = `<ul>${posts.join("")}</ul>`;
+        page.innerHTML = template;
+    });
 }

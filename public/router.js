@@ -1,111 +1,64 @@
-var routes = [];
-var patternCache = {};
-
-function matchUri(pattern, uri) {
-    const compiledPattern = this.compilePattern(pattern)
-    const { regexString, params } = compiledPattern
-    const match = uri.match(new RegExp(regexString, 'i'))
-    if (!match) {
-        return null
-    }
-
-    return params.reduce((result, param, index) => {
-        result[param] = match[index+1]
-        return result
-    }, {})
-}
-
-function compilePattern(pattern) {
-    let compiled = patternCache[pattern];
-    if (!compiled) {
-        compiled = this._compilePattern(pattern);
-        patternCache[pattern] = compiled;
-    }
-    return compiled
-}
-
-function _compilePattern(pattern) {
-    const params = []
-    const regexParts = []
-
-    pattern
-        .split('/')
-        .filter((s) => !!s)
-        .forEach((segment) => {
-            // it is a parameter
-            if (segment.indexOf(":") === 0 && segment.length > 1) {
-                params.push(segment.slice(1))
-                regexParts.push("([^/]+)")
-            } else {
-                regexParts.push(segment)
-            }
-        })
-
-    regexParts.push("?")
-
-    return {
-        regexString: regexParts.join('/'),
-        params
-    }
-}
-
-// Adds a new route.
-function addRoute(url, dispatch) {
-    routes.push({ url: url, dispatch: dispatch });
-}
-
-function parseQuery(location) {
-    let match;
-    const pl = /\+/g;  // Regex for replacing addition symbol with a space
-    const search = /([^&=]+)=?([^&]*)/g;
-    const decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); };
-    const query = location.search.substring(1);
-
-    queryData = {};
-    while (match = search.exec(query))
-       queryData[decode(match[1])] = decode(match[2]);
-    return queryData;
-}
-
-// Based on current url, loads page.
-function loadPage(user) {
-    const location = window.location;
-    let path = location.hash.replace(/^#/, "");
-    
-    // This is a temporary hack to make regex match work.
-    if (path === "/") {
-        path = "/home";
-    }
-
-    // Parses the query.
-    const query = parseQuery(location);
-
-    // Performs a pattern match.
-    var params
-    for (var i = 0; i < this.routes.length; i++) {
-        const route = this.routes[i]
-        params = this.matchUri(route.url, path)
-        
-        if (params) {
-            route.dispatch({ params: params, query: query })
-            break
+const Router = {
+    routes: [],
+    cachedRoutes: {},
+    getFragment: function() {
+        const match = window.location.href.match(/#(.*)$/);
+        const path = match ? match[1] : "";
+        // Removes slashes.
+        return path.toString().replace(/^\/|\/$/g, '');
+    },
+    add: function(re, handler) {
+        this.routes.push({ re: re, handler: handler });
+    },
+    check: function(f) {
+        const fragment = f || this.getFragment();
+        const cachedRoute = this.cachedRoutes[fragment];
+        if (cachedRoute) {
+            cachedRoute.handler.apply({}, cachedRoute.data);;
+            return this;
         }
+
+        for(let i = 0; i < this.routes.length; i++) {
+            const match = fragment.match(this.routes[i].re);
+            if (match) {
+                const handler = this.routes[i].handler;
+                match.shift();
+                this.cachedRoutes[fragment] = { handler: handler, data: match };
+                handler.apply({}, match);
+                return this;
+            }           
+        }
+        return this;
+    },
+    navigate: function(path) {
+        window.location.href = window.location.href.replace(/#(.*)$/, '') + '#' + path;
+    },
+    listen: function() {
+        const that = this;
+        // Listens to hash changes.
+        window.addEventListener("hashchange", () => {
+            that.check();
+        });
+
+        window.onload = function() {
+            // Waits for auth before loading page. 
+            initApp().then(function(user) {
+                that.check();
+            });
+        };
     }
 }
 
-// Registers routes.
-addRoute("/home", loadHome);
-addRoute("/about", loadAbout);
-addRoute("/dashboard", loadDashboard);
-addRoute("/login", loadLogin);
-addRoute("/logout", handleLogout);
-addRoute("/signup/more", loadSignupMore);
-addRoute("/signup", loadSignup);
-addRoute("/service", loadService);
-addRoute("/mag", loadMag);
-addRoute("/editor", loadEditor);
+Router.add("about", loadAbout);
+Router.add("dashboard", loadDashboard);
+Router.add("login", loadLogin);
+Router.add("logout", handleLogout);
+Router.add("signup/more", loadSignupMore);
+Router.add("signup", loadSignup);
+Router.add("service", loadService);
+Router.add("posts/(.*)", loadPost);
+Router.add("magazine", loadMag);
+Router.add("editor", loadEditor);
+Router.add("", loadHome);
 
-// Listens on hash change.
-window.addEventListener("hashchange", () => {
-    loadPage();
-});
+Router.listen();
