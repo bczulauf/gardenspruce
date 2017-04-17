@@ -6,7 +6,7 @@ function loadDashboard() {
             var page = document.getElementById("page");
             var firstName = snapshot.val().firstName;
             var template = `
-                <div class="grid">
+                <div class="section grid">
                 <div id="payments" class="col col4">
                 <h4>
                 Payment Updates

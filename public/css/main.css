@@ -12,11 +12,6 @@ body {
 
 a {
     color: #111;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 .header {
@@ -28,9 +23,10 @@ a:hover {
 }
 
 .header-link {
-    font-family: Georgia, serif;
+    font-family: "OpenSans", Arial, sans-serif;
     text-decoration: none;
     margin-left: 20px;
+    font-size: 13px;
 }
 
 .logo {
@@ -135,24 +131,37 @@ a:hover {
 
 .splash-content {
     background: rgba(255, 255, 255, .9);
-    padding: 10px 40px 40px 40px;
+    padding: 40px;
     width: 400px;
 }
 
 h2 {
     font-weight: normal;
+    font-size: 28px;
+    line-height: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0;
+    padding: 0;  
 }
 
 h4 {
     font-family: 'OpenSans';
     text-transform: uppercase;
-    font-size: .8em;
-    line-height: .8em;
+    font-size: 13px;
+    line-height: 13px;
 }
 
 p {
     font-family: georgia;
-    line-height: 1.6em;
+    font-size: 14px;
+    line-height: 22px;
 }
 
 .txt-lg {
@@ -188,7 +197,12 @@ p {
 footer {
     align-items: center;
     height: 80px;
-    font-size: .8em;
+    font-size: 12px;
+    font-family: "OpenSans", Arial, sans-serif;
+}
+
+.footer-link {
+    text-decoration: none;
 }
 
 .selected-link::before {
@@ -201,10 +215,10 @@ footer {
     color: #edd216;
 }
 
-input {
-    font-family: Georgia;
+input, textarea {
+    font-family: "OpenSans", Arial, sans-serif;
     display: block;
-    padding: 10px 5px;
+    padding: 10px;
     margin-bottom: 20px;
 }
 
@@ -267,4 +281,8 @@ input {
 .fit {
     width: 100%;
     max-height: 280px;
+}
+
+#blog-body {
+    height: 280px;
 }

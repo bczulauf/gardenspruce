@@ -16,12 +16,11 @@ function handleSignUp(evt) {
     // Sign in with email and pass.
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
         var path = window.location.pathname;
-        
         firebase.database().ref('users/' + user.uid).update({
             firstName: firstName,
             lastName: lastName
         }).then(function() {
-            window.location.replace(`${path}#/signup/more`); 
+            window.location.replace(`${path}#/signup/more`);
         }).catch(function(error) {
             console.log(error);
         });

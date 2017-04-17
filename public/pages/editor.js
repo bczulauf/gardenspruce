@@ -1,23 +1,39 @@
-function handleBlogSubmit() {
+function handlePostSubmit(evt) {
     evt.preventDefault();
-    const data = new FormData(document.getElementById('blog-form'));
-    const title = data.get("blogTitle");
-    const post = data.get("blogPost");
+    const data = new FormData(document.getElementById("post-form"));
+    const user = firebase.auth().currentUser;
+    const uid = user.uid;
+    const postData = {
+        uid: uid,
+        title: data.get("title"),
+        photoUrl: data.get("photoUrl"),
+        blurb: data.get("blurb"),
+        body: data.get("body"),
+        date: new Date()
+    };
 
-    firebase.database
+    const newPostKey = firebase.database().ref().child("posts").push().key;
+    const updates = {};
+    updates[`/posts/${newPostKey}`] = postData;
+    updates[`/user-posts/${uid}/${newPostKey}`] = postData;
+
+    return firebase.database().ref().update(updates);
 }
 
 function loadEditor() {
     const page = document.getElementById("page");
     template = `
-        <form id="blog-form">
-            <label>Title</label>
-            <input type="text" name="blogTitle" />
-            <label>Post</label>
-            <textarea name="blogPost"></textarea>
-        </form>
+        <div class="section">
+            <form id="post-form">
+                <input type="text" class="inpt-long" name="title" placeholder="Title" />
+                <input type="text" class="inpt-long" name="photoUrl" placeholder="Photo Url" />
+                <textarea name="blurb" class="inpt-long" placeholder="Blurb"></textarea>
+                <textarea name="body" id="blog-body" class="inpt-long" placeholder="Body"></textarea>
+                <button type="submit" class="btn btn-lg">Post</button>
+            </form>
+        </div>
     `;
 
     page.innerHTML = template;
-    document.getElementById('blog-form').addEventListener('submit', handleBlogSubmit, false);
+    document.getElementById("post-form").addEventListener("submit", handlePostSubmit, false);
 }

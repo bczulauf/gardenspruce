@@ -37,13 +37,15 @@ function handleLogin() {
 function loadLogin() {
     var page = document.getElementById("page");
     var template = `
-        <h4>Log In</h4>
-        <input class="inpt-long" type="text" id="email" name="email" placeholder="Email"/>
-        <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
-        <button class="btn" id="login" name="login">Log In</button>
-        <p>
-            Don't have an account yet? <a href="#/signup">Sign up!</a>
-        </p>
+        <div class="section">
+            <h4>Log In</h4>
+            <input class="inpt-long" type="text" id="email" name="email" placeholder="Email"/>
+            <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
+            <button class="btn" id="login" name="login">Log In</button>
+            <p>
+                Don't have an account yet? <a href="#/signup">Sign up!</a>
+            </p>
+        </div>
     `;
 
     page.innerHTML = template;
