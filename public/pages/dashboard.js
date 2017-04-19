@@ -11,7 +11,7 @@ function loadDashboard() {
                 <div class="col col8">
                     <h4>Project Updates</h4>
                     <p>Welcome, ${firstName}! We are matching you with a designer right now.</p>
-                    <p class="txt-sm>You'll get an email introduction to a designer when a match is made, so keep an eye out! This will take at least three business days</p>
+                    <p>You'll get an email introduction to a designer when a match is made, so keep an eye out! This will take at least three business days</p>
                 </div>    
             </div>`;
 

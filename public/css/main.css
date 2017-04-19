@@ -166,32 +166,6 @@ p {
     line-height: 20px;
 }
 
-.txt-lg {
-    font-size: 1.4em
-}
-
-.txt-md {
-    font-size: 1.2em; 
-}
-
-.txt-sm {
-    font-size: .7em;
-}
-
-.num {
-    font-size: 1.8em;
-    line-height: 1.8em;
-    text-align: center;
-}
-
-.emphasis:first-of-type::first-letter {
-    font-size: 3.2em;
-    float: left;
-    padding-top: .24em;
-    padding-right: .1em;
-    font-weight: bold;
-}
-
 .column {
     padding-right: 20px;
 }
