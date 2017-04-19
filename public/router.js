@@ -61,7 +61,6 @@ Router.add("about", loadAbout);
 Router.add("dashboard", loadDashboard, true);
 Router.add("login", loadLogin);
 Router.add("logout", handleLogout);
-Router.add("signup/more", loadSignupMore);
 Router.add("signup", loadSignup);
 Router.add("service", loadService);
 Router.add("posts/(.*)", loadPost);
