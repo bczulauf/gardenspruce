@@ -1,7 +1,8 @@
 /**
  * Handles the log in button press.
  */
-function handleLogin() {
+function handleLogin(evt) {
+    evt.preventDefault();
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     if (email.length < 4) {
@@ -15,8 +16,7 @@ function handleLogin() {
     
     // Sign in with email and pass.
     firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
-        var path = window.location.pathname;
-        window.location.replace(`${path}#/dashboard`);
+        Router.navigate("dashboard");
     }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -28,10 +28,7 @@ function handleLogin() {
             alert(errorMessage);
         }
         console.log(error);
-        document.getElementById('login').disabled = false;
     });
-
-    document.getElementById('login').disabled = true;
 }
 
 function loadLogin() {
@@ -39,9 +36,11 @@ function loadLogin() {
     var template = `
         <div class="section">
             <h4>Log In</h4>
-            <input class="inpt-long" type="text" id="email" name="email" placeholder="Email"/>
-            <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
-            <button class="btn" id="login" name="login">Log In</button>
+            <form id="login-form">
+                <input class="inpt-long" type="text" id="email" name="email" placeholder="Email"/>
+                <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
+                <button type="submit" class="btn btn-lg" id="login" name="login">Log In</button>
+            </form>
             <p>
                 Don't have an account yet? <a href="#/signup">Sign up!</a>
             </p>
@@ -49,5 +48,5 @@ function loadLogin() {
     `;
 
     page.innerHTML = template;
-    document.getElementById('login').addEventListener('click', handleLogin, false);
+    document.getElementById("login-form").addEventListener("submit", handleLogin, false);
 }

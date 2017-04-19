@@ -7,10 +7,10 @@ const Router = {
         // Removes slashes.
         return path.toString().replace(/^\/|\/$/g, '');
     },
-    add: function(re, handler) {
-        this.routes.push({ re: re, handler: handler });
+    add: function(re, handler, requiresAuth) {
+        this.routes.push({ re: re, handler: handler, requiresAuth: requiresAuth });
     },
-    check: function(f) {
+    match: function(f) {
         const fragment = f || this.getFragment();
         const cachedRoute = this.cachedRoutes[fragment];
         if (cachedRoute) {
@@ -21,10 +21,16 @@ const Router = {
         for(let i = 0; i < this.routes.length; i++) {
             const match = fragment.match(this.routes[i].re);
             if (match) {
-                const handler = this.routes[i].handler;
-                match.shift();
-                this.cachedRoutes[fragment] = { handler: handler, data: match };
-                handler.apply({}, match);
+                const route = this.routes[i];
+
+                if (route.requiresAuth && !firebase.auth().currentUser) {
+                    this.navigate("signup");
+                } else {
+                    const handler = this.routes[i].handler;
+                    match.shift();
+                    this.cachedRoutes[fragment] = { handler: handler, data: match };
+                    handler.apply({}, match);
+                }
                 return this;
             }           
         }
@@ -37,20 +43,17 @@ const Router = {
         const that = this;
         // Listens to hash changes.
         window.addEventListener("hashchange", () => {
-            that.check();
+            that.match();
         });
 
-        window.onload = function() {
-            // Waits for auth before loading page. 
-            initApp().then(function(user) {
-                that.check();
-            });
-        };
+        window.addEventListener("load", () => {
+            that.match();
+        });
     }
 }
 
 Router.add("about", loadAbout);
-Router.add("dashboard", loadDashboard);
+Router.add("dashboard", loadDashboard, true);
 Router.add("login", loadLogin);
 Router.add("logout", handleLogout);
 Router.add("signup/more", loadSignupMore);
@@ -60,5 +63,4 @@ Router.add("posts/(.*)", loadPost);
 Router.add("magazine", loadMag);
 Router.add("editor", loadEditor);
 Router.add("", loadHome);
-
 Router.listen();

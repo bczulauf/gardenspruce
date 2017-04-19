@@ -4,20 +4,15 @@
 function handleSignUpMore(evt) {
     evt.preventDefault();
     const data = new FormData(document.getElementById('create-more'));
-    const street = data.get("street");
-    const zip = data.get("zip");
-    const phone = data.get("phone");
-
     var user = firebase.auth().currentUser;
 
     // Sign in with email and pass.
     firebase.database().ref('users/' + user.uid).update({
-        street: street,
-        zip: zip,
-        phone: phone
+        street: data.get("street"),
+        zip: data.get("zip"),
+        phone: data.get("phone")
     }).then(function() {
-        var path = window.location.pathname;  
-        window.location.replace(`${path}#/dashboard`); 
+        Router.navigate("dashboard");
     }).catch(function(error) {
         console.log(error);
     });

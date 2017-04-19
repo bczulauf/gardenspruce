@@ -136,6 +136,7 @@ a {
 }
 
 h2 {
+    font-family: 'Asar', georgia;
     font-weight: normal;
     font-size: 28px;
     line-height: 28px;
@@ -144,6 +145,7 @@ h2 {
 }
 
 h3 {
+    font-family: 'Asar', georgia;
     font-weight: normal;
     font-size: 20px;
     line-height: 28px;
@@ -159,9 +161,9 @@ h4 {
 }
 
 p {
-    font-family: georgia;
+    font-family: 'Asar', georgia;
     font-size: 14px;
-    line-height: 22px;
+    line-height: 20px;
 }
 
 .txt-lg {
@@ -285,4 +287,16 @@ input, textarea {
 
 #blog-body {
     height: 280px;
+}
+
+/* Authentication rules */
+.auth .signup-link,
+.dashboard-link,
+.logout-link {
+    display: none;
+}
+
+.auth .dashboard-link,
+.auth .logout-link {
+    display: block;
 }

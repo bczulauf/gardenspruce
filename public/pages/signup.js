@@ -3,7 +3,7 @@
  */
 function handleSignUp(evt) {
     evt.preventDefault();
-    const data = new FormData(document.getElementById('create-account'));
+    const data = new FormData(document.getElementById("create-account"));
     const email = data.get("email");
     const password = data.get("password");
     const firstName = data.get("firstName");
@@ -15,12 +15,11 @@ function handleSignUp(evt) {
     }
     // Sign in with email and pass.
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
-        var path = window.location.pathname;
         firebase.database().ref('users/' + user.uid).update({
             firstName: firstName,
             lastName: lastName
         }).then(function() {
-            window.location.replace(`${path}#/signup/more`);
+            Router.navigate("signup/more");
         }).catch(function(error) {
             console.log(error);
         });
@@ -56,5 +55,5 @@ function loadSignup(data) {
         </form>`;
 
     page.innerHTML = template;
-    document.getElementById('create-account').addEventListener('submit', handleSignUp, false);
+    document.getElementById("create-account").addEventListener("submit", handleSignUp, false);
 }
