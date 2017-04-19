@@ -1,5 +1,4 @@
 function loadHome() {
-    const page = document.getElementById("page");
     const template = `
         <div class="splash">
             <div class="splash-content">

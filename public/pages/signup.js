@@ -41,7 +41,6 @@ function handleSignUp(evt) {
 function loadSignup(data) {
     const query = data.query;
     const email = query && query["email"];
-    const page = document.getElementById("page");
     const template = `
         <h4>Sign Up</h4>
         <form id="create-account">

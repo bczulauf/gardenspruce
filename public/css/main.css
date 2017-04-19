@@ -255,14 +255,6 @@ input, textarea {
     margin-right: 0;
 }
 
-#logout-link {
-    display: none;
-}
-
-.dashboard-link {
-    display: none;
-}
-
 .flex {
     display: flex;
 }
@@ -290,7 +282,7 @@ input, textarea {
 }
 
 /* Authentication rules */
-.auth .signup-link,
+.auth .login-link,
 .dashboard-link,
 .logout-link {
     display: none;

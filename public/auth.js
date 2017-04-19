@@ -1,13 +1,13 @@
 // Listening for auth state changes.
 let currentUser;
 firebase.auth().onAuthStateChanged((user) => {
+    const body = document.getElementsByTagName("body")[0];
     currentUser = user;
     if (user) {
         // User is signed in.
-        page.classList.add("auth");
+        body.classList.add("auth");
     } else {
         // User is signed out.
-        page.classList.remove("auth");
-        document.getElementById('login').disabled = false;
+        body.classList.remove("auth");
     }
 });

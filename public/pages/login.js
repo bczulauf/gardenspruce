@@ -32,7 +32,6 @@ function handleLogin(evt) {
 }
 
 function loadLogin() {
-    var page = document.getElementById("page");
     var template = `
         <div class="section">
             <h4>Log In</h4>

@@ -1,8 +1,7 @@
 function handlePostSubmit(evt) {
     evt.preventDefault();
     const data = new FormData(document.getElementById("post-form"));
-    const user = firebase.auth().currentUser;
-    const uid = user.uid;
+    const uid = currentUser.uid;
     const postData = {
         uid: uid,
         title: data.get("title"),
@@ -21,7 +20,6 @@ function handlePostSubmit(evt) {
 }
 
 function loadEditor() {
-    const page = document.getElementById("page");
     template = `
         <div class="section">
             <form id="post-form">

@@ -1,3 +1,4 @@
+const page = document.getElementById("page");
 const Router = {
     routes: [],
     cachedRoutes: {},
@@ -14,7 +15,11 @@ const Router = {
         const fragment = f || this.getFragment();
         const cachedRoute = this.cachedRoutes[fragment];
         if (cachedRoute) {
-            cachedRoute.handler.apply({}, cachedRoute.data);;
+            if (cachedRoute.requiresAuth && !currentUser) {
+                this.navigate("signup");
+            } else {
+                cachedRoute.handler.apply({}, cachedRoute.data);;
+            }
             return this;
         }
 
@@ -23,7 +28,7 @@ const Router = {
             if (match) {
                 const route = this.routes[i];
 
-                if (route.requiresAuth && !firebase.auth().currentUser) {
+                if (route.requiresAuth && !currentUser) {
                     this.navigate("signup");
                 } else {
                     const handler = this.routes[i].handler;

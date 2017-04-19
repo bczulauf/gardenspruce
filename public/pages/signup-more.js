@@ -4,10 +4,9 @@
 function handleSignUpMore(evt) {
     evt.preventDefault();
     const data = new FormData(document.getElementById('create-more'));
-    var user = firebase.auth().currentUser;
 
     // Sign in with email and pass.
-    firebase.database().ref('users/' + user.uid).update({
+    firebase.database().ref('users/' + currentUser.uid).update({
         street: data.get("street"),
         zip: data.get("zip"),
         phone: data.get("phone")
@@ -21,7 +20,6 @@ function handleSignUpMore(evt) {
 function loadSignupMore(data) {
     const query = data.query;
     const email = query && query["email"];
-    const page = document.getElementById("page");
     const template = `
         <h4>Your project</h4>
         <form id="create-more">

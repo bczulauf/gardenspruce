@@ -1,5 +1,4 @@
 function loadService() {
-    var page = document.getElementById("page");
     var template = `
         <div class="section">
             <div class="row">
