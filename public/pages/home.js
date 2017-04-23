@@ -14,7 +14,7 @@ function handleSignup(evt) {
             alert(errorMessage);
         }
         console.log(error);
-    })
+    });
 }
 
 function loadHome() {

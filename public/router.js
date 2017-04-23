@@ -16,7 +16,7 @@ const Router = {
         const cachedRoute = this.cachedRoutes[fragment];
         if (cachedRoute) {
             if (cachedRoute.requiresAuth && !currentUser) {
-                this.navigate("signup");
+                this.navigate("login");
             } else {
                 cachedRoute.handler.apply({}, cachedRoute.data);;
             }
@@ -29,7 +29,7 @@ const Router = {
                 const route = this.routes[i];
 
                 if (route.requiresAuth && !currentUser) {
-                    this.navigate("signup");
+                    this.navigate("login");
                 } else {
                     const handler = this.routes[i].handler;
                     match.shift();
@@ -65,6 +65,7 @@ Router.add("signup", loadSignup);
 Router.add("service", loadService);
 Router.add("posts/(.*)", loadPost);
 Router.add("magazine", loadMag);
-Router.add("editor", loadEditor);
+Router.add("editor", loadEditor, true);
+Router.add("create", loadCreateAccount);
 Router.add("", loadHome);
 Router.listen();

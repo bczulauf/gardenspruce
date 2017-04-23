@@ -41,7 +41,7 @@ function loadLogin() {
                 <button type="submit" class="btn btn-lg" id="login" name="login">Log In</button>
             </form>
             <p>
-                Don't have an account yet? <a href="#/signup">Sign up!</a>
+                Don't have an account yet? <a href="#/create">Sign up!</a>
             </p>
         </div>
     `;
