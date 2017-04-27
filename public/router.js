@@ -15,11 +15,16 @@ const Router = {
         const fragment = f || this.getFragment();
         const cachedRoute = this.cachedRoutes[fragment];
         if (cachedRoute) {
-            if (cachedRoute.requiresAuth && !currentUser) {
-                this.navigate("login");
-            } else {
-                cachedRoute.handler.apply({}, cachedRoute.data);;
+            if (cachedRoute.requiresAuth) {
+                checkAuthPromise().then((user) => {
+                    if (!user) {
+                        this.navigate("login");
+                        return this;
+                    }
+                });
             }
+            
+            cachedRoute.handler.apply({}, cachedRoute.data);;
             return this;
         }
 
@@ -28,14 +33,19 @@ const Router = {
             if (match) {
                 const route = this.routes[i];
 
-                if (route.requiresAuth && !currentUser) {
-                    this.navigate("login");
-                } else {
-                    const handler = this.routes[i].handler;
-                    match.shift();
-                    this.cachedRoutes[fragment] = { handler: handler, data: match };
-                    handler.apply({}, match);
+                if (route.requiresAuth) {
+                    checkAuthPromise().then((user) => {
+                        if (!user) {
+                            this.navigate("login");
+                            return this;
+                        }
+                    });
                 }
+                const handler = this.routes[i].handler;
+                match.shift();
+                this.cachedRoutes[fragment] = { handler: handler, data: match };
+                handler.apply({}, match);
+
                 return this;
             }           
         }

@@ -1,7 +1,7 @@
 function loadDashboard() {
     firebase.database().ref('/users/' + currentUser.uid).once('value').then(function(snapshot) {
-        var firstName = snapshot.val().firstName;
-        var template = `
+        const firstName = snapshot.val().firstName;
+        const template = `
             <div class="section grid">
                 <div id="payments" class="col col4">
                     <h4>
