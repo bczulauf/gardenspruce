@@ -24,21 +24,30 @@ function renderHtml(str) {
     return str;
 }
 
+// this should be a promise. handle postsubmit should wait for this to resolve. it will then have the image url which postSubmit needs.
 function handleFileSelect(evt) {
-    const file = evt.target.files[0];
+    const target = evt.target;
+    const file = target.files[0];
+
     // Get a reference to the location where we'll store our photos.
-    const storageRef = storage.ref().child("mag-photos");
+    const storageRef = firebase.storage().ref().child("mag-photos");
     
     // Get a reference to store file at photos/<FILENAME>.jpg
     const photoRef = storageRef.child(file.name);
 
     // Upload file to Firebase Storage
     const uploadTask = photoRef.put(file);
+
+
     uploadTask.on("state_changed", null, null, function() {
         // When the image has successfully uploaded, we get its download URL
         const downloadUrl = uploadTask.snapshot.downloadURL;
-        // Set the download URL to the message box, so that the user can send it to the database
-        //textInput.value = downloadUrl;
+
+        // Stores a reference in database for easy lookup.
+        const newPhotoKey = firebase.database().ref().child("mag-photos").push().key;
+        const updates = {};
+        updates[`/mag-photos/${newPhotoKey}`] = downloadUrl.toString();
+        firebase.database().ref().update(updates);
     });
 }
 
@@ -58,7 +67,7 @@ function handlePostSubmit(evt) {
             blurb: data.get("blurb"),
             body: post,
             date: new Date(),
-            author: `${firstName} ${lastName}` 
+            author: `${firstName} ${lastName}`
         };
 
         const newPostKey = firebase.database().ref().child("posts").push().key;
@@ -71,21 +80,33 @@ function handlePostSubmit(evt) {
 }
 
 function loadEditor() {
-    template = `
+    const template = `
         <div class="section">
             <div class="row">
-                <div class="col col8">
+                <div class="col col6">
                     <form id="post-form">
                         <input type="text" class="inpt-long" name="title" placeholder="Title" />
-                        <input type="file" id="image-file" class="inpt-long" name="photoUrl" />
                         <textarea name="blurb" class="inpt-long" placeholder="Blurb"></textarea>
+                        <input type="text" name="photoUrl" class="inpt-long" placeholder="Image Url" />
                         <textarea name="body" id="blog-body" class="inpt-long" placeholder="Body"></textarea>
                         <button type="submit" class="btn btn-lg">Post</button>
                     </form>
                 </div>
-                <div class="col col4">
-                    image: ![Alt text](/path/to/img.jpg)</br>
-                    link: [link title](http://www.google.com)
+                <div class="col col6">
+                    <h4>Instructions</h4>
+                    <ul class="box instructions">
+                        <li>
+                            <div><b>Image:</b></div>
+                            <div>![Alt text](/path/to/img.jpg)</div>
+                        </li>
+                        <li>
+                            <div><b>Link:</b></div>
+                            <div>[link title](http://www.google.com)</div>
+                        </li>
+                    </ul>
+                    <h4>Images</h4>
+                    <input type="file" id="image-file" />
+                    <div id="thumbs"></div>
                 </div>
             </div>
         </div>
@@ -94,4 +115,14 @@ function loadEditor() {
     page.innerHTML = template;
     document.getElementById("image-file").addEventListener("change", handleFileSelect, false);
     document.getElementById("post-form").addEventListener("submit", handlePostSubmit, false);
+
+    firebase.database().ref("mag-photos").once('value').then((snapshot) => {
+        const photos = [];
+        snapshot.forEach(function(image) {
+            photos.push(`<li><div>${image.val()}</div><img src="${image.val()}" class="thumb-photo"></li>`);
+        });
+
+        const template = `<ul>${photos.join("")}</ul>`;
+        document.getElementById("thumbs").innerHTML = template;
+    });
 }

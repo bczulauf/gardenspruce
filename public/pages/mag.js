@@ -2,10 +2,26 @@ function loadMag() {
     firebase.database().ref("posts").once('value').then((snapshot) => {
         const posts = []
         snapshot.forEach(function(post) {
-            posts.push(`<li><h3><a href="#posts/${encodeURIComponent(post.key)}">${post.val().title}</a></h3><p>${post.val().blurb}</p></li>`);
+            posts.push(`
+                <li>
+                    <div class="row">
+                        <div class="col col3">
+                            <img src="${post.val().photoUrl}" class="post-thumb">
+                        </div>
+                        <div class="col col6">
+                            <h2><a href="#posts/${encodeURIComponent(post.key)}">${post.val().title}</a></h2>
+                            <h3>${post.val().blurb}</h3>
+                            <a href="">${post.val().author}</a>
+                        </div>
+                    </div>
+                </li>`);
         });
 
-        const template = `<div class="section"><ul class="posts">${posts.join("")}</ul></div>`;
+        const template = `
+            <div class="section">
+                <h2 class="page-header">The Magazine</h2>
+                <ul class="posts content-list">${posts.join("")}</ul>
+            </div>`;
         page.innerHTML = template;
     });
 }

@@ -34,7 +34,7 @@ function handleLogin(evt) {
 function loadLogin() {
     var template = `
         <div class="section">
-            <h4>Log In</h4>
+            <h2 class="page-header">Log In</h2>
             <form id="login-form">
                 <input class="inpt-long" type="text" id="email" name="email" placeholder="Email"/>
                 <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>

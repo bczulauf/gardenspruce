@@ -21,7 +21,7 @@ function handleSignUp(evt) {
 function loadSignup() {
     const template = `
         <div class="section">
-            <h4>Sign Up</h4>
+            <h2 class="page-header">Create Account</h2>
             <form id="user-form">
                 <div class="row">
                     <input class="inpt-short" type="text" id="first-name" name="firstName" required placeholder="First name"/>

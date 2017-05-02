@@ -20,6 +20,7 @@ function handleSignup(evt) {
 function loadCreateAccount() {
     const template = `
         <div class="section">
+            <h2 class="page-header">Sign Up</h2>
             <form id="create-account-form">
                 <input type="email" name="email" class="inpt-long" placeholder="Your email" required autofocus/>
                 <input type="password" class="inpt-long" name="password" required placeholder="Password"/>

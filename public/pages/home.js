@@ -24,7 +24,7 @@ function loadHome() {
                 <h2>
                     Create your dream garden.
                 </h2>
-                <p>Sign up for a free consultation with one of our top designers.</p>
+                <h3>Sign up for a free consultation with one of our top designers.</h3>
                 <form id="signup-form">
                     <input type="email" name="email" class="inpt-stretch" placeholder="Your email" required autofocus/>
                     <input type="password" class="inpt-stretch" name="password" required placeholder="Password"/>
@@ -34,9 +34,8 @@ function loadHome() {
         </div>
         <div class="section">
             <div class="row">
-                <div class="col2"></div>
-                <div class="col5">
-                    <p><h3>Whether you are accessorizing or gut-renovating, we provide a custom and personal service that works. We will guide you through the entire garden design process, from designs to plant installation.</h3></p>
+                <div class="col8">
+                    <p>Whether you are accessorizing or gut-renovating, we provide a custom and personal service that works. We will guide you through the entire garden design process, from designs to plant installation.</p>
                 </div>
             </div>
         </div>`;

@@ -1,7 +1,6 @@
 // Listening for auth state changes.
 let currentUser;
 firebase.auth().onAuthStateChanged((user) => {
-    resolve(user);
     const body = document.getElementsByTagName("body")[0];
     currentUser = user;
     if (user) {
@@ -13,10 +12,14 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
-function checkAuthPromise() {
+function checkAuthPromise(requiresAuth) {
     return new Promise((resolve, reject) => {
-        firebase.auth().onAuthStateChanged((user) => {
-            resolve(user);
-        });
+        if (requiresAuth) {
+            firebase.auth().onAuthStateChanged((user) => {
+                resolve(user);
+            });
+        } else {
+            resolve(true);
+        }
     });
 }

@@ -15,17 +15,15 @@ const Router = {
         const fragment = f || this.getFragment();
         const cachedRoute = this.cachedRoutes[fragment];
         if (cachedRoute) {
-            if (cachedRoute.requiresAuth) {
-                checkAuthPromise().then((user) => {
-                    if (!user) {
-                        this.navigate("login");
-                        return this;
-                    }
-                });
-            }
-            
-            cachedRoute.handler.apply({}, cachedRoute.data);;
-            return this;
+            return checkAuthPromise(cachedRoute.requiresAuth).then((user) => {
+                if (!user) {
+                    this.navigate("login");
+                    return this;
+                } else {
+                    cachedRoute.handler.apply({}, cachedRoute.data);;
+                    return this;
+                }
+            });
         }
 
         for(let i = 0; i < this.routes.length; i++) {
@@ -33,20 +31,19 @@ const Router = {
             if (match) {
                 const route = this.routes[i];
 
-                if (route.requiresAuth) {
-                    checkAuthPromise().then((user) => {
-                        if (!user) {
-                            this.navigate("login");
-                            return this;
-                        }
-                    });
-                }
-                const handler = this.routes[i].handler;
-                match.shift();
-                this.cachedRoutes[fragment] = { handler: handler, data: match };
-                handler.apply({}, match);
+                return checkAuthPromise(route.requiresAuth).then((user) => {
+                    if (!user) {
+                        this.navigate("login");
+                        return this;
+                    } else {
+                        const handler = this.routes[i].handler;
+                        match.shift();
+                        this.cachedRoutes[fragment] = { handler: handler, data: match };
+                        handler.apply({}, match);
 
-                return this;
+                        return this;
+                    }
+                });
             }           
         }
         return this;
