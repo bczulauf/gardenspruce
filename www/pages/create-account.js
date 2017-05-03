@@ -1,9 +1,9 @@
 /**
  * Handles the sign up button press.
  */
-function handleSignUp(evt) {
+function completeUserAccount(evt) {
     evt.preventDefault();
-    const data = new FormData(document.getElementById("user-form"));
+    const data = new FormData(evt.target);
     
     firebase.database().ref('users/' + currentUser.uid).update({
         firstName: data.get("firstName"),
@@ -18,7 +18,7 @@ function handleSignUp(evt) {
     });
 }
 
-function loadSignup() {
+function loadCreateAccount() {
     const template = `
         <div class="section">
             <h2 class="page-header">Create Account</h2>
@@ -32,10 +32,10 @@ function loadSignup() {
                     <input class="inpt-short" type="text" id="zip" name="zip" required placeholder="Zip"/>
                     <input class="inpt-short" type="text" id="phone" name="phone" required placeholder="Phone"/>
                 </div>
-                <button type="submit" class="btn btn-lg" id="sign-up" name="signup">Submit</button>
+                <button type="submit" class="btn btn-lg submit-btn" id="sign-up" name="signup">Submit</button>
             </form>
         </div>`;
 
     page.innerHTML = template;
-    document.getElementById("user-form").addEventListener("submit", handleSignUp, false);
+    document.getElementById("user-form").addEventListener("submit", completeUserAccount, false);
 }

@@ -1,22 +1,3 @@
-function handleSignup(evt) {
-    evt.preventDefault();
-    const data = new FormData(document.getElementById("signup-form"));
-    firebase.auth().createUserWithEmailAndPassword(data.get("email"), data.get("password")).then(() => {
-        Router.navigate("signup");
-    }).catch((err) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // [START_EXCLUDE]
-        if (errorCode == 'auth/weak-password') {
-            alert('The password is too weak.');
-        } else {
-            alert(errorMessage);
-        }
-        console.log(error);
-    });
-}
-
 function loadHome() {
     const template = `
         <div class="splash">
@@ -28,7 +9,7 @@ function loadHome() {
                 <form id="signup-form">
                     <input type="email" name="email" class="inpt-stretch" placeholder="Your email" required autofocus/>
                     <input type="password" class="inpt-stretch" name="password" required placeholder="Password"/>
-                    <button type="submit" id="start-button" class="btn btn-lg">Get Started</button>
+                    <button type="submit" id="start-button" class="btn btn-lg submit-btn">Get Started</button>
                 </form>
             </div>
         </div>
@@ -41,5 +22,5 @@ function loadHome() {
         </div>`;
 
     page.innerHTML = template;
-    document.getElementById("signup-form").addEventListener("submit", handleSignup, false);
+    document.getElementById("signup-form").addEventListener("submit", createUserFromForm, false);
 }

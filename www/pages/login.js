@@ -38,10 +38,10 @@ function loadLogin() {
             <form id="login-form">
                 <input class="inpt-long" type="text" id="email" name="email" placeholder="Email"/>
                 <input class="inpt-long" type="password" id="password" name="password" placeholder="Password"/>
-                <button type="submit" class="btn btn-lg" id="login" name="login">Log In</button>
+                <button type="submit" class="btn btn-lg submit-btn" id="login" name="login">Log In</button>
             </form>
             <p>
-                Don't have an account yet? <a href="#/create">Sign up!</a>
+                Don't have an account yet? <a href="#/signup">Sign up!</a>
             </p>
         </div>
     `;

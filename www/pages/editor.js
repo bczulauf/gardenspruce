@@ -89,7 +89,7 @@ function loadEditor() {
                         <textarea name="blurb" class="inpt-long" placeholder="Blurb"></textarea>
                         <input type="text" name="photoUrl" class="inpt-long" placeholder="Image Url" />
                         <textarea name="body" id="blog-body" class="inpt-long" placeholder="Body"></textarea>
-                        <button type="submit" class="btn btn-lg">Post</button>
+                        <button type="submit" class="btn btn-lg submit-btn">Post</button>
                     </form>
                 </div>
                 <div class="col col6">

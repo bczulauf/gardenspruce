@@ -7,7 +7,7 @@ function loadService() {
                     <li>
                         <div>
                             <h2 class="inline">Book a free consultation</h2>
-                            <h3>Based on the project details you provide, your dedicated customer service rep (a Homepolish Queen Bee) will hand select one of our top designers to meet with you for a complimentary consult.</h3>
+                            <h3>Based on the project details you provide, your dedicated customer service rep will hand select one of our top designers to meet with you for a complimentary consult.</h3>
                         </div>
                     </li>
                     <li>
@@ -19,7 +19,7 @@ function loadService() {
                     <li>
                         <div>
                             <h2>Design and Execute</h2>
-                            <h3>Depending on your scope of work, your designer will provide floor plans and furniture layouts, pick paint palettes, source furnishings, finishes and accessories, and manage contractors and installation. Your dedicated Queen Bee will offer answers and solutions along the way.</h3>
+                            <h3>Depending on your scope of work, your designer will provide design plans, pick plants and hardscape, source materials, and manage contractors and installation. Your dedicated service rep will offer answers and solutions along the way.</h3>
                         </div>
                     </li>
                 </ol>

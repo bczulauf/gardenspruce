@@ -25,6 +25,10 @@ a {
     font-weight: 600;
 }
 
+.btn {
+    font-size: 15px;
+}
+
 .logo {
     font-size: 36px;
     line-height: 32px;
@@ -34,12 +38,16 @@ a {
 
 .btn {
     font-family: Helvetica;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     padding: 5px 15px;
     background: #fff;
     color: #111;
     border: 2px solid #111;
+}
+
+.dashboard-link {
+    font-size: 15px;
 }
 
 .btn:hover {
@@ -194,7 +202,7 @@ form {
 
 input, textarea {
     font-family: Helvetica;
-    font-size: 15px;
+    font-size: 16px;
     display: block;
     padding: 10px 0;
     margin-bottom: 10px;
@@ -242,6 +250,10 @@ input, textarea {
 
 .btn-lg {
     padding: 10px 40px;
+}
+
+.submit-btn {
+    margin-top: 10px;
 }
 
 .divider {
