@@ -4,11 +4,11 @@ function loadPost(data) {
         const val = snapshot.val();
         const template = `
             <div class="section">
-                <img src="${val.photoUrl}" class="post-image" />
                 <div>${val.date}</div>
                 <h2>${val.title}</h2>
                 <h3>${val.blurb}</h3>
-                <a href="">${val.author}</a>
+                <div><a href="">${val.author}</a></div>
+                <img src="${val.photoUrl}" class="post-image" />
                 <p>${val.body}</p>
             </div>`;
         page.innerHTML = template;
