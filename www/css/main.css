@@ -131,7 +131,6 @@ a {
     background-position: center;
     background-color: #ddd;
     height: 400px;
-    margin-bottom: 40px;
 }
 
 .splash-content {
@@ -355,4 +354,47 @@ input, textarea {
     margin-bottom: 20px;
     border-bottom: 1px solid #111;
     border-top: 3px solid #111;
+}
+
+.section-header {
+    margin-top: 80px;
+    border-top: 2px solid #111;
+    padding-top: 20px;
+}
+
+.price-box {
+    margin-top: 40px;
+}
+
+.thmb {
+    height: 140px;
+    background-size: cover;
+}
+
+.img1 {
+    background-image: url("../img/photo1.png");
+}
+
+.img2 {
+    background-image: url("../img/photo2.png");
+}
+
+.img3 {
+    background-image: url("../img/photo3.png");
+}
+
+.img4 {
+    background-image: url("../img/photo4.png");
+}
+
+.img5 {
+    background-image: url("../img/photo5.png");
+}
+
+.img6 {
+    background-image: url("../img/photo6.png");
+}
+
+.row-space {
+    margin-top: 20px;
 }
