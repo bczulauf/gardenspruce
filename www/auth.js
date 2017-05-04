@@ -26,12 +26,21 @@ function checkAuthPromise(requiresAuth) {
 }
 
 // Creates a new user from a form.
-function createUserFromForm(evt) {
+function createUserFromForm(evt, group) {
     evt.preventDefault();
     const data = new FormData(evt.target);
-    firebase.auth().createUserWithEmailAndPassword(data.get("email"), data.get("password")).then(() => {
-        Router.navigate("create");
-    }).catch((error) => {
+
+    firebase.auth().createUserWithEmailAndPassword(data.get("email"), data.get("password"))
+        .then((data) => {
+            const uid = data.uid;
+            const updates = {};
+            updates[`/users/${uid}/groups/${group}`] = true;
+            updates[`/groups/${group}/${uid}`] = true;
+
+            return firebase.database().ref().update(updates);
+        }).then(() => {
+            Router.navigate("create");
+        }).catch((error) => {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;

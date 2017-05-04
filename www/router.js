@@ -73,6 +73,6 @@ Router.add("service", loadService);
 Router.add("posts/(.*)", loadPost);
 Router.add("magazine", loadMag);
 Router.add("editor", loadEditor, true);
-Router.add("create", loadCreateAccount);
+Router.add("create", loadCreateAccount, true);
 Router.add("", loadHome);
 Router.listen();

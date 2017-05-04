@@ -209,6 +209,10 @@ input, textarea {
     border-bottom: 2px solid #111;
 }
 
+textarea {
+    border: 2px solid #111;
+}
+
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #111;
     font-style: normal;

@@ -77,5 +77,5 @@ function loadHome() {
         </div>`;
 
     page.innerHTML = template;
-    document.getElementById("signup-form").addEventListener("submit", createUserFromForm, false);
+    document.getElementById("signup-form").addEventListener("submit", function(evt){createUserFromForm(evt, "customer")}, false);
 }

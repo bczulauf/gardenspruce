@@ -10,5 +10,5 @@ function loadSignup() {
         </div>`;
 
     page.innerHTML = template;
-    document.getElementById("create-account-form").addEventListener("submit", createUserFromForm, false);
+    document.getElementById("create-account-form").addEventListener("submit", function(evt){createUserFromForm(evt, "customer")}, false);
 }

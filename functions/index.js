@@ -19,7 +19,7 @@ exports.sendEmailConfirmation = functions.auth.user().onCreate(event => {
     };
 
     mailOptions.subject = 'Welcome to Garden Spruce!';
-    mailOptions.text = 'Thanks you for subscribing to our newsletter. You will receive our next weekly newsletter.';
+    mailOptions.text = 'Thank you for joining Garden Spruce. We are busy finding the perfect designer for you and will contact you soon!';
     return mailTransport.sendMail(mailOptions).then(() => {
         console.log('New subscription confirmation email sent to:', email);
     });
