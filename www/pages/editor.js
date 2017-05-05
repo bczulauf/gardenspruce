@@ -80,49 +80,61 @@ function handlePostSubmit(evt) {
 }
 
 function loadEditor() {
-    const template = `
-        <div class="section">
-            <div class="row">
-                <div class="col col6">
-                    <form id="post-form">
-                        <input type="text" class="inpt-long" name="title" placeholder="Title" />
-                        <textarea name="blurb" class="inpt-long" placeholder="Blurb"></textarea>
-                        <input type="text" name="photoUrl" class="inpt-long" placeholder="Image Url" />
-                        <textarea name="body" id="blog-body" class="inpt-long" placeholder="Body"></textarea>
-                        <button type="submit" class="btn btn-lg submit-btn">Post</button>
-                    </form>
-                </div>
-                <div class="col col6">
-                    <h4>Instructions</h4>
-                    <ul class="box instructions">
-                        <li>
-                            <div><b>Image:</b></div>
-                            <div>![Alt text](/path/to/img.jpg)</div>
-                        </li>
-                        <li>
-                            <div><b>Link:</b></div>
-                            <div>[link title](http://www.google.com)</div>
-                        </li>
-                    </ul>
-                    <h4>Images</h4>
-                    <input type="file" id="image-file" />
-                    <div id="thumbs"></div>
-                </div>
-            </div>
-        </div>
-    `;
+    const posts = [];
+    firebase.database().ref("posts").once('value').then((snapshot) => {
+        snapshot.forEach(function(post) {
+            posts.push(`
+                <li>
+                    <a href="#posts/${encodeURIComponent(post.key)}">${post.val().title}</a>
+                </li>`);
+        });
 
-    page.innerHTML = template;
-    document.getElementById("image-file").addEventListener("change", handleFileSelect, false);
-    document.getElementById("post-form").addEventListener("submit", handlePostSubmit, false);
-
-    firebase.database().ref("mag-photos").once('value').then((snapshot) => {
+        return firebase.database().ref("mag-photos").once('value');
+    }).then((snapshot) => {
         const photos = [];
         snapshot.forEach(function(image) {
             photos.push(`<li><div>${image.val()}</div><img src="${image.val()}" class="thumb-photo"></li>`);
         });
+        const template = `
+            <div class="section">
+                <h2 class="page-header">Editor</h2>
+                <div class="row">
+                    <div class="col col3">
+                        <h3>Posts</h3>
+                        <ul class="posts content-list">${posts.join("")}</ul>
+                    </div>
+                    <div class="col col6">
+                        <h3>Current Post</h3>
+                        <form id="post-form">
+                            <input type="text" class="inpt-long" name="title" placeholder="Title" />
+                            <textarea name="blurb" class="inpt-long" placeholder="Blurb"></textarea>
+                            <input type="text" name="photoUrl" class="inpt-long" placeholder="Image Url" />
+                            <textarea name="body" id="blog-body" class="inpt-long" placeholder="Body"></textarea>
+                            <button type="submit" class="btn btn-lg submit-btn">Post</button>
+                        </form>
+                    </div>
+                    <div class="col col3">
+                        <h3>Instructions</h3>
+                        <ul class="box instructions">
+                            <li>
+                                <div><b>Image:</b></div>
+                                <div>![Alt text](/path/to/img.jpg)</div>
+                            </li>
+                            <li>
+                                <div><b>Link:</b></div>
+                                <div>[link title](http://www.google.com)</div>
+                            </li>
+                        </ul>
+                        <h3>Images</h3>
+                        <input type="file" id="image-file" />
+                        <div id="thumbs"><ul>${photos.join("")}</ul></div>
+                    </div>
+                </div>
+            </div>
+        `;
 
-        const template = `<ul>${photos.join("")}</ul>`;
-        document.getElementById("thumbs").innerHTML = template;
+        page.innerHTML = template;
+        document.getElementById("image-file").addEventListener("change", handleFileSelect, false);
+        document.getElementById("post-form").addEventListener("submit", handlePostSubmit, false);
     });
 }

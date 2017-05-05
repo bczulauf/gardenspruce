@@ -1,6 +1,6 @@
 function loadMag() {
     firebase.database().ref("posts").once('value').then((snapshot) => {
-        const posts = []
+        const posts = [];
         snapshot.forEach(function(post) {
             posts.push(`
                 <li>
