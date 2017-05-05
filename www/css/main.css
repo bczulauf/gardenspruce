@@ -215,6 +215,11 @@ textarea {
     padding: 10px;
 }
 
+input[type=file] {
+    padding: 0;
+    border: none;
+}
+
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #111;
     font-style: normal;
@@ -408,4 +413,22 @@ textarea {
 
 .margin-bottom {
     margin-bottom: 20px;
+}
+
+.post-item {
+    width: 180px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.editor-posts {
+    display: flex;
+    align-items: center;
+}
+
+.editor-thumbs {
+    margin: 0;
+    padding: 0;
 }

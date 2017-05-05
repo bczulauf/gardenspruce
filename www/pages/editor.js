@@ -84,8 +84,8 @@ function loadEditor() {
     firebase.database().ref("posts").once('value').then((snapshot) => {
         snapshot.forEach(function(post) {
             posts.push(`
-                <li>
-                    <a href="#posts/${encodeURIComponent(post.key)}">${post.val().title}</a>
+                <li class="editor-posts">
+                    <a href="#posts/${encodeURIComponent(post.key)}" class="post-item">${post.val().title}</a><span class="post-del">delete<span>
                 </li>`);
         });
 
@@ -93,7 +93,7 @@ function loadEditor() {
     }).then((snapshot) => {
         const photos = [];
         snapshot.forEach(function(image) {
-            photos.push(`<li><div>${image.val()}</div><img src="${image.val()}" class="thumb-photo"></li>`);
+            photos.push(`<li><input type="text" class="inpt-stretch" value="${image.val()}" /><img src="${image.val()}" class="thumb-photo"></li>`);
         });
         const template = `
             <div class="section">
@@ -127,7 +127,7 @@ function loadEditor() {
                         </ul>
                         <h3>Images</h3>
                         <input type="file" id="image-file" />
-                        <div id="thumbs"><ul>${photos.join("")}</ul></div>
+                        <ul class="editor-thumbs">${photos.join("")}</ul>
                     </div>
                 </div>
             </div>
