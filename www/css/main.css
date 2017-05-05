@@ -183,6 +183,7 @@ footer {
 
 .footer-link {
     text-decoration: none;
+    margin-right: 20px;
 }
 
 .selected-link::before {
@@ -206,11 +207,11 @@ input, textarea {
     padding: 10px 0;
     margin-bottom: 10px;
     border: none;
-    border-bottom: 2px solid #111;
+    border-bottom: 1px solid #111;
 }
 
 textarea {
-    border: 2px solid #111;
+    border: 1px solid #111;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -399,6 +400,11 @@ textarea {
     background-image: url("../img/photo6.png");
 }
 
-.row-space {
+/* Standard styles */
+.margin-top {
     margin-top: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
 }

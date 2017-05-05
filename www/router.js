@@ -72,6 +72,8 @@ Router.add("signup", loadSignup);
 Router.add("service", loadService);
 Router.add("posts/(.*)", loadPost);
 Router.add("magazine", loadMag);
+Router.add("terms", loadTerms);
+Router.add("contact", loadContact);
 Router.add("editor", loadEditor, true);
 Router.add("create", loadCreateAccount, true);
 Router.add("", loadHome);

@@ -26,7 +26,7 @@ function loadHome() {
                         <div class="col col2 thmb img2"></div>
                         <div class="col col2 thmb img3"></div>
                     </div>
-                    <div class="row row-space">
+                    <div class="row margin-top">
                         <div class="col col2 thmb img4"></div>
                         <div class="col col2 thmb img5"></div>
                         <div class="col col2 thmb img6"></div>
@@ -34,7 +34,7 @@ function loadHome() {
                 </div>
             </div>
             <h2 class="section-header">How it works</h2>
-            <div class="row">
+            <div class="row margin-bottom">
                 <div class="col col7">
                     <ol class="ordered-list">
                         <li>
