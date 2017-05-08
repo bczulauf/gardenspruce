@@ -4,6 +4,7 @@ function loadPost(data) {
         const val = snapshot.val();
         const template = `
             <div class="section">
+                <h2 class="page-header">The Magazine</h2>
                 <div>${val.date}</div>
                 <h2>${val.title}</h2>
                 <h3>${val.blurb}</h3>
@@ -11,6 +12,6 @@ function loadPost(data) {
                 <img src="${val.photoUrl}" class="post-image" />
                 <p>${val.body}</p>
             </div>`;
-        page.innerHTML = template;
+        pageElem.innerHTML = template;
     });
 }

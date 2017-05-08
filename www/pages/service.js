@@ -43,5 +43,5 @@ function loadService() {
             </div>
         </div>`;
 
-    page.innerHTML = template;
+    pageElem.innerHTML = template;
 }

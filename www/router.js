@@ -1,4 +1,4 @@
-const page = document.getElementById("page");
+const pageElem = document.getElementById("page");
 const Router = {
     routes: [],
     cachedRoutes: {},

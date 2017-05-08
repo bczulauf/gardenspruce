@@ -76,6 +76,6 @@ function loadHome() {
             <a href="#/service">Learn More</a>
         </div>`;
 
-    page.innerHTML = template;
+    pageElem.innerHTML = template;
     document.getElementById("signup-form").addEventListener("submit", function(evt){createUserFromForm(evt, "customer")}, false);
 }

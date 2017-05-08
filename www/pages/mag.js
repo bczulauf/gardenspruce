@@ -22,6 +22,6 @@ function loadMag() {
                 <h2 class="page-header">The Magazine</h2>
                 <ul class="posts content-list">${posts.join("")}</ul>
             </div>`;
-        page.innerHTML = template;
+        pageElem.innerHTML = template;
     });
 }

@@ -133,7 +133,7 @@ function loadEditor() {
             </div>
         `;
 
-        page.innerHTML = template;
+        pageElem.innerHTML = template;
         document.getElementById("image-file").addEventListener("change", handleFileSelect, false);
         document.getElementById("post-form").addEventListener("submit", handlePostSubmit, false);
     });

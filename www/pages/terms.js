@@ -19,5 +19,5 @@ function loadTerms() {
             <p>Garden Spruce expressly disclaims any liability that may arise between Users of its Site, including Designers.</p>
         </div>`;
 
-    page.innerHTML = template;
+    pageElem.innerHTML = template;
 }

@@ -8,5 +8,5 @@ function loadAbout() {
         </div>
     `;
 
-    page.innerHTML = template;
+    pageElem.innerHTML = template;
 }

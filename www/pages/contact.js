@@ -8,5 +8,5 @@ function loadContact() {
             <h3>206-888-8888</h3>
         </div>`;
 
-    page.innerHTML = template;
+    pageElem.innerHTML = template;
 }

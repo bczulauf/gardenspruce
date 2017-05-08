@@ -36,6 +36,6 @@ function loadCreateAccount() {
             </form>
         </div>`;
 
-    page.innerHTML = template;
+    pageElem.innerHTML = template;
     document.getElementById("user-form").addEventListener("submit", completeUserAccount, false);
 }

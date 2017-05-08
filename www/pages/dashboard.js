@@ -18,6 +18,6 @@ function loadDashboard() {
                 </div> 
             </div>`;
 
-        page.innerHTML = template;
+        pageElem.innerHTML = template;
     });
 }

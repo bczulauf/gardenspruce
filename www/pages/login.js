@@ -46,6 +46,6 @@ function loadLogin() {
         </div>
     `;
 
-    page.innerHTML = template;
+    pageElem.innerHTML = template;
     document.getElementById("login-form").addEventListener("submit", handleLogin, false);
 }
