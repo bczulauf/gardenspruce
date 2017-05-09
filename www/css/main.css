@@ -436,3 +436,17 @@ input[type=file] {
 .home-img {
     width: 300px;
 }
+
+.services-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.services-list li {
+    padding: 5px 0;
+}
+
+.text-small {
+    line-height: 22px;
+}

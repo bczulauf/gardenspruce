@@ -2,8 +2,48 @@ function loadAbout() {
     var template = `
         <div class="section">
             <h2 class="page-header">About</h2>
-            <div class="col8">
-                <p>Garden Spruce was founded with a simple idea: garden design needed a redesign for the way we live now. So we set out to create a smart, accessible and personal service that works whether you are accessorizing or gut-renovating. By giving our clients access to top emerging garden design talent, and exceptional customer service (we are fanatical about it), we are making it easy to love where you live.</p>
+            <div class="row">
+                <div class="col7">
+                    <p>Whether you want a few perfect pots or a breezy backyard oasis, Garden Spruce makes it easy to create your dream garden.</p>
+                    <p>We'll match you with a handpicked, top-quality designer to help you with every part of the design process, from sketches to blueprints, installation to maintenance.</p>
+                    <p>Whether you're looking for some advice on a DIY project or a full service garden makeover, our designers, contractors and crews are happy to help.  Prices are wholesale, payment is simple and transparent, and packages are tailored to your needs.  Getting started is risk free, so tell us about your project!  We can't wait to get digging.</p>
+                </div>
+                <div class="col col2"></div>
+                <div class="col col3">
+                    <h3>Services</h3>
+                    <ul class="services-list">
+                        <li>
+                            Pots & Planters
+                        </li>
+                        <li>
+                            Porches
+                        </li>
+                        <li>
+                            Patios
+                        </li>
+                        <li>
+                            Yards
+                        </li>
+                        <li>
+                            Irrigation
+                        </li>
+                        <li>
+                            Vegetable Gardens
+                        </li>
+                        <li>
+                            Rain Wise Gardens
+                        </li>
+                        <li>
+                            Hardscaping
+                        </li>
+                        <li>
+                            Fences & Walls
+                        </li>
+                        <li>
+                            Sheds
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     `;
