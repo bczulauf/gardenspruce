@@ -1,20 +1,152 @@
+/*----- GENERIC -----*/
 body {
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
-    font-family: Helvetica, sans-serif;
-    color: #111;  
+    font-family: "Jaldi", Helvetica, sans-serif;
+    color: #111;
+    font-size: 18px;
 }
 
 a {
-    color: #24afa8;
+    color: #111;
     text-decoration: none;
+}
+
+/*----- GRID -----*/
+.row {
+    display: flex;
+}
+
+.col {
+    margin-right: 40px;
+}
+.col:last-child {
+    margin-right: 0;
+}
+.col1 {
+    width: 50px;
+}
+.col2 {
+    width: 140px;
+}
+.col3 {
+    width: 230px;
+}
+.col4 {
+    width: 330px;
+}
+.col5 {
+    width: 410px;
+}
+.col6 {
+    width: 500px;
+}
+.col7 {
+    width: 590px;
+}
+.col8 {
+    width: 680px;
+}
+.col9 {
+    width: 770px;
+}
+
+.col10 {
+    width: 860px;
+}
+
+.col11 {
+    width: 950px;
+}
+
+.col12 {
+    width: 1040px;
+}
+
+.centered {
+    justify-content: center;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+/*----- HEADERS -----*/
+h2 {
+    font-family: 'PT Serif';
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 36px;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+h3 {
+    font-family: 'PT Serif';
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+    margin: 0 0 10px 0;
+    padding: 0; 
+}
+
+h4 {
+    font-family: "Jaldi";
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 22px;
+    margin: 0;
+    padding: 0;  
+}
+
+/*----- HOME -----*/
+.home-hero {
+    padding: 60px 0;
+    background-image: url("../img/hero.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-hero-content {
+    background: rgba(255, 255, 255, .9);
+    padding: 60px;
+}
+
+#home-form {
+    margin-top: 40px;
+    display: flex;
+}
+
+#home-form input {
+    border: 1px solid #111;
+    border-right: none;
+    padding-left: 10px;
+}
+
+
+
+.button-std {
+    font-family: "Jaldi";
+    font-size: 16px;
+    padding: 5px 15px;
+    background: #fff;
+    border: 1px solid #111;
+    color: #111;
+    text-transform: uppercase;
+    display: inline-block;
 }
 
 .header {
     display: flex;
-    width: 940px;
-    height: 100px;
+    height: 60px;
     align-items: center;
     margin: 0 auto;
 }
@@ -22,28 +154,23 @@ a {
 .header-link {
     margin-left: 20px;
     font-size: 15px;
-    font-weight: 600;
     color: #111;
-}
-
-.btn {
-    font-size: 15px;
+    text-transform: uppercase;
 }
 
 .logo {
-    width: 280px;
-    margin-right: 80px;
-    fill: #111;
+    color: #111;
+    font-size: 24px;
 }
 
 .btn {
-    font-family: Helvetica;
+    font-family: "Jaldi";
     font-size: 16px;
-    font-weight: 600;
     padding: 5px 15px;
-    background: #59bfc7;
-    color: #fff;
-    border: none;
+    background: #fff;
+    border: 1px solid #111;
+    color: #111;
+    text-transform: uppercase;
 }
 
 .dashboard-link {
@@ -51,50 +178,11 @@ a {
 }
 
 .btn:hover {
-    background: #56aeb6;
+    background: #fff;
 }
 
 .section {
-    width: 940px;
     margin: 0 auto;
-}
-
-.row {
-    display: flex;
-}
-
-.grid {
-    display: flex;
-}
-.col {
-    margin-right: 20px;
-}
-.col:last-child {
-    margin-right: 0;
-}
-.col1 {
-    width: 60px;
-}
-.col2 {
-    width: 140px;
-}
-.col3 {
-    width: 220px;
-}
-.col4 {
-    width: 300px;
-}
-.col5 {
-    width: 380px;
-}
-.col6 {
-    width: 460px;
-}
-.col7 {
-    width: 540px;
-}
-.col8 {
-    width: 620px;
 }
 
 .photos {
@@ -119,54 +207,18 @@ a {
     margin-right: 0;
 }
 
-.splash {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("../img/splash.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #ddd;
-    height: 400px;
+.no {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #111;
+    margin: 20px 0;
 }
 
-.splash-content {
-    border: 4px solid #111;
-    background-color: #fff;
-    padding: 40px 80px;
-    width: 400px;
-}
-
-h2 {
-    font-family: Helvetica;
-    font-weight: bold;
-    font-size: 28px;
-    margin: 0 0 10px 0;
-    padding: 0;
-}
-
-h3 {
-    font-family: Helvetica;
-    font-weight: lighter;
-    font-size: 20px;
-    line-height: 28px;
-    margin: 0 0 10px 0;
-    padding: 0;  
-}
-
-h4 {
-    font-family: Helvetica;
-    text-transform: uppercase;
-    font-size: 13px;
-    line-height: 13px;
-}
-
-p {
-    font-family: Georgia;
-    font-size: 20px;
-    line-height: 28px;
+.image-placeholder {
+    background: #eac3c3;
+    height: 240px;
 }
 
 .column {
@@ -176,8 +228,6 @@ p {
 footer {
     align-items: center;
     height: 80px;
-    font-size: 13px;
-    font-weight: bold;
 }
 
 .footer-link {
@@ -201,11 +251,10 @@ form {
 }
 
 input, textarea {
-    font-family: Helvetica;
+    font-family: "Jaldi";
     font-size: 16px;
+    text-transform: uppercase;
     display: block;
-    padding: 10px 0;
-    margin-bottom: 10px;
     border: none;
     border-bottom: 1px solid #111;
 }
@@ -221,11 +270,11 @@ input[type=file] {
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: #111;
+    color: #777;
     font-style: normal;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #111;
+    color: #777;
     font-style: normal;
 }
 
@@ -238,7 +287,7 @@ input[type=file] {
 }
 
 .inpt-long {
-    width: 460px;
+    width: 300px;
 }
 
 .inpt-short {
@@ -259,11 +308,7 @@ input[type=file] {
 }
 
 .btn-lg {
-    padding: 10px 40px;
-}
-
-.submit-btn {
-    margin-top: 10px;
+    padding: 10px 20px;
 }
 
 .divider {
@@ -304,7 +349,6 @@ input[type=file] {
 }
 
 .box {
-    background: #f8f8f8;
     border: 1px solid #111;
     padding: 20px;
 }
@@ -369,8 +413,6 @@ input[type=file] {
 
 .section-header {
     margin-top: 80px;
-    border-top: 2px solid #111;
-    padding-top: 20px;
 }
 
 .price-box {
@@ -407,13 +449,6 @@ input[type=file] {
 }
 
 /* Standard styles */
-.margin-top {
-    margin-top: 20px;
-}
-
-.margin-bottom {
-    margin-bottom: 20px;
-}
 
 .post-item {
     width: 180px;
@@ -431,10 +466,6 @@ input[type=file] {
 .editor-thumbs {
     margin: 0;
     padding: 0;
-}
-
-.home-img {
-    width: 300px;
 }
 
 .services-list {
