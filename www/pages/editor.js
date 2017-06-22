@@ -85,7 +85,7 @@ function loadEditor() {
         snapshot.forEach(function(post) {
             posts.push(`
                 <li class="editor-posts">
-                    <a href="#posts/${encodeURIComponent(post.key)}" class="post-item">${post.val().title}</a><span class="post-del">delete<span>
+                    <a href="#posts/${encodeURIComponent(post.key)}" class="editor-post-item">${post.val().title}</a><span class="post-del">delete<span>
                 </li>`);
         });
 
@@ -93,7 +93,7 @@ function loadEditor() {
     }).then((snapshot) => {
         const photos = [];
         snapshot.forEach(function(image) {
-            photos.push(`<li><input type="text" class="inpt-stretch" value="${image.val()}" /><img src="${image.val()}" class="thumb-photo"></li>`);
+            photos.push(`<li><input type="text" value="${image.val()}" /><img src="${image.val()}" class="editor-thumb-photo"></li>`);
         });
         const template = `
             <div class="section">
@@ -101,21 +101,21 @@ function loadEditor() {
                 <div class="row">
                     <div class="col col3">
                         <h3>Posts</h3>
-                        <ul class="posts content-list">${posts.join("")}</ul>
+                        <ul class="posts list-std">${posts.join("")}</ul>
                     </div>
                     <div class="col col6">
                         <h3>Current Post</h3>
                         <form id="post-form">
-                            <input type="text" class="inpt-long" name="title" placeholder="Title" />
-                            <textarea name="blurb" class="inpt-long" placeholder="Blurb"></textarea>
-                            <input type="text" name="photoUrl" class="inpt-long" placeholder="Image Url" />
-                            <textarea name="body" id="blog-body" class="inpt-long" placeholder="Body"></textarea>
-                            <button type="submit" class="btn btn-lg submit-btn">Post</button>
+                            <input type="text" class="inpt-std" name="title" placeholder="Title" />
+                            <textarea name="blurb" class="inpt-std" placeholder="Blurb"></textarea>
+                            <input type="text" name="photoUrl" class="inpt-std" placeholder="Image Url" />
+                            <textarea name="body" id="editor-blog-field" class="inpt-std" placeholder="Body"></textarea>
+                            <button type="submit" class="button-std submit-btn">Post</button>
                         </form>
                     </div>
                     <div class="col col3">
                         <h3>Instructions</h3>
-                        <ul class="box instructions">
+                        <ul class="box list-std">
                             <li>
                                 <div><b>Image:</b></div>
                                 <div>![Alt text](/path/to/img.jpg)</div>
@@ -127,7 +127,7 @@ function loadEditor() {
                         </ul>
                         <h3>Images</h3>
                         <input type="file" id="image-file" />
-                        <ul class="editor-thumbs">${photos.join("")}</ul>
+                        <ul class="list-std">${photos.join("")}</ul>
                     </div>
                 </div>
             </div>

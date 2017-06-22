@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
-// Checks if user is signed in or if we need to redirect to signup page.
+// Checks for current user.
 function checkAuthPromise(requiresAuth) {
     return new Promise((resolve, reject) => {
         if (requiresAuth) {
@@ -26,11 +26,8 @@ function checkAuthPromise(requiresAuth) {
 }
 
 // Creates a new user from a form.
-function createUserFromForm(evt, group) {
-    evt.preventDefault();
-    const data = new FormData(evt.target);
-
-    firebase.auth().createUserWithEmailAndPassword(data.get("email"), data.get("password"))
+function createUserFromForm(email, password, group) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((data) => {
             const uid = data.uid;
             const updates = {};
@@ -38,18 +35,16 @@ function createUserFromForm(evt, group) {
             updates[`/groups/${group}/${uid}`] = true;
 
             return firebase.database().ref().update(updates);
-        }).then(() => {
-            Router.navigate("create");
         }).catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // [START_EXCLUDE]
-        if (errorCode == 'auth/weak-password') {
-            alert('The password is too weak.');
-        } else {
-            alert(errorMessage);
-        }
-        console.log(error);
-    });
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // [START_EXCLUDE]
+            if (errorCode == 'auth/weak-password') {
+                alert('The password is too weak.');
+            } else {
+                alert(errorMessage);
+            }
+            console.log(error);
+        });
 }

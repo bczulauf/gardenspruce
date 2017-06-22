@@ -10,7 +10,7 @@ const mailTransport = nodemailer.createTransport(
     `smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
 
 // Sends an email confirmation when a user first creates an account.
-exports.sendEmailConfirmation = functions.auth.user().onCreate(event => {
+functions.auth.user().onCreate(event => {
     const user = event.data; // The Firebase user.
     const email = user.email; // The email of the user.
     const mailOptions = {
@@ -20,7 +20,7 @@ exports.sendEmailConfirmation = functions.auth.user().onCreate(event => {
 
     mailOptions.subject = 'Welcome to Garden Spruce!';
     mailOptions.text = 'Thank you for joining Garden Spruce. We are busy finding the perfect designer for you and will contact you soon!';
-    return mailTransport.sendMail(mailOptions).then(() => {
-        console.log('New subscription confirmation email sent to:', email);
-    });
+    // mailTransport.sendMail(mailOptions).then(() => {
+    //     console.log('New subscription confirmation email sent to:', email);
+    // });
 });

@@ -11,6 +11,10 @@
     "users": {
       ".read": "auth != null",
       ".write": "true"
+    },
+    "groups": {
+      ".read": "true",
+      ".write": "true"
     }
   }
 }

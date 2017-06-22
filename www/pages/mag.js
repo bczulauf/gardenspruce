@@ -6,7 +6,7 @@ function loadMag() {
                 <li>
                     <div class="row">
                         <div class="col col3">
-                            <img src="${post.val().photoUrl}" class="post-thumb">
+                            <img src="${post.val().photoUrl}" class="mag-thumb">
                         </div>
                         <div class="col col6">
                             <h2><a href="#posts/${encodeURIComponent(post.key)}">${post.val().title}</a></h2>
@@ -20,7 +20,7 @@ function loadMag() {
         const template = `
             <div class="section">
                 <h2 class="page-header">The Magazine</h2>
-                <ul class="posts content-list">${posts.join("")}</ul>
+                <ul class="list-std">${posts.join("")}</ul>
             </div>`;
         pageElem.innerHTML = template;
     });
